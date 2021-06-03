@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     fun openRv(view: View) {
         startActivity(Intent(this, RVActivity::class.java))
     }

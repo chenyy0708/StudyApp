@@ -2,6 +2,32 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'maven'
+}
+
+def username = "admin"
+def pwd = "qq123456"
+
+def nexusRepositoryUrl = "http://localhost:8081/repository/study_release/"
+def VERSION_NAME = '1.0.0'
+def ARTIFACT_ID = 'user'
+def GROUP_ID = 'com.example.study'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: nexusRepositoryUrl) {
+                authentication(userName:username, password: pwd)
+            }
+            pom.project {
+                artifactId ARTIFACT_ID
+                version VERSION_NAME
+                groupId GROUP_ID
+                packaging 'aar'
+                description 'lib des'
+            }
+        }
+    }
 }
 
 android {

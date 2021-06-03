@@ -93,7 +93,12 @@ dependencies {
 
     implementation project(path: ':common')
 
-    runtimeOnly project(path: ':user')
-    runtimeOnly project(path: ':shop')
-    runtimeOnly project(path: ':home')
+//    runtimeOnly project(path: ':user')
+//    runtimeOnly project(path: ':shop')
+//    runtimeOnly project(path: ':home')
+
+    // 本地Nexus
+    runtimeOnly "com.example.study:user:1.0.0"
+    runtimeOnly "com.example.study:home:1.0.0"
+    runtimeOnly "com.example.study:shop:1.0.0"
 }
