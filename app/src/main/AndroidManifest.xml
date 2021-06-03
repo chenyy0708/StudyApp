@@ -3,14 +3,14 @@
     package="com.example.study">
 
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MyApp"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Study">
@@ -26,9 +26,11 @@
 
 
         <activity
-            android:label="RecycleView"
-            android:name=".demo.RVActivity"
-            />
+            android:name=".ui.RVActivity"
+            android:label="RecycleView" />
+        <activity
+            android:name=".ui.ComponentActivity"
+            android:label="Matrix" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.study.demo
+package com.example.study.ui
 
 import android.os.Bundle
 import android.view.View

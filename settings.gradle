@@ -1,2 +1,7 @@
+include ':service'
+include ':common'
+include ':shop'
+include ':home'
+include ':user'
 include ':app'
 rootProject.name = "Study"
