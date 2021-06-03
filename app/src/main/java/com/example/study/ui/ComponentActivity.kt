@@ -2,8 +2,10 @@ package com.example.study.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.service.provide.IUserProvider
 import com.example.study.R
 
 /**
@@ -19,6 +21,8 @@ class ComponentActivity : AppCompatActivity() {
     }
 
     fun user(view: View) {
+        val provider = ARouter.getInstance().navigation(IUserProvider::class.java)
+        Toast.makeText(this, provider?.getUserInfo(), Toast.LENGTH_SHORT).show()
         ARouter.getInstance().build("/user/activity").navigation()
     }
 
