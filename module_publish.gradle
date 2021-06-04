@@ -1,0 +1,55 @@
+apply plugin: 'maven'
+
+def username = "60b99877395ee4198dade13d"
+def password = "G2iSW9O0uPQR"
+def groupName = "com.example.study"
+
+static def getVersion(String module) {
+    def version = "1.0.0-SNAPSHOT"
+    switch (module) {
+        case "home":
+            version = "1.0.3-SNAPSHOT"
+            break
+        case "shop":
+            version = "1.0.3-SNAPSHOT"
+            break
+        case "user":
+            version = "1.0.3-SNAPSHOT"
+            break
+        case "service":
+            version = "1.0.1-SNAPSHOT"
+            break
+        case "common":
+            version = "1.0.1-SNAPSHOT"
+            break
+    }
+    return version
+}
+
+android {
+    defaultConfig {
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: rootProject.ext.release_url) {
+                    authentication(
+                            userName: username,
+                            password: password
+                    )
+                }
+                snapshotRepository(url: rootProject.ext.snapshot_url) {
+                    authentication(
+                            userName: username,
+                            password: password
+                    )
+                }
+                pom.version = getVersion(project.getName())
+                pom.artifactId = project.getName()
+                pom.groupId = groupName
+            }
+        }
+    }
+}
+
