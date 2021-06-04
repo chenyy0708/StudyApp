@@ -98,7 +98,7 @@ dependencies {
 //    runtimeOnly project(path: ':home')
 
     // 本地Nexus
-    runtimeOnly "com.example.study:user:1.0.0"
-    runtimeOnly "com.example.study:home:1.0.0"
-    runtimeOnly "com.example.study:shop:1.0.0"
+    runtimeOnly "com.example.study:user:1.0.1-SNAPSHOT"
+    runtimeOnly "com.example.study:home:1.0.1-SNAPSHOT"
+    runtimeOnly "com.example.study:shop:1.0.1-SNAPSHOT"
 }

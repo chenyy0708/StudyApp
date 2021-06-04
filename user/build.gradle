@@ -3,29 +3,34 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'maven'
+    id 'maven-publish'
 }
 
-def username = "admin"
-def pwd = "qq123456"
-
-def nexusRepositoryUrl = "http://localhost:8081/repository/study_release/"
-def VERSION_NAME = '1.0.0'
+def username = "60b99877395ee4198dade13d"
+def pwd = "G2iSW9O0uPQR"
+def VERSION_NAME = '1.0.1-SNAPSHOT'
 def ARTIFACT_ID = 'user'
 def GROUP_ID = 'com.example.study'
+
 
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: nexusRepositoryUrl) {
-                authentication(userName:username, password: pwd)
+            repository(url: 'https://packages.aliyun.com/maven/repository/2109100-release-4siMok/') {
+                authentication(
+                        userName: username,
+                        password: pwd
+                )
             }
-            pom.project {
-                artifactId ARTIFACT_ID
-                version VERSION_NAME
-                groupId GROUP_ID
-                packaging 'aar'
-                description 'lib des'
+            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2109100-snapshot-bgORc0/') {
+                authentication(
+                        userName: username,
+                        password: pwd
+                )
             }
+            pom.version = VERSION_NAME
+            pom.artifactId = ARTIFACT_ID
+            pom.groupId = GROUP_ID
         }
     }
 }

@@ -10,7 +10,7 @@ import com.example.service.provide.IUserProvider
 
 @Route(path = "/user/provider")
 class UserProviderImpl : IUserProvider {
-    override fun getUserInfo(): String = "ChenYy"
+    override fun getUserInfo(): String = "HaHaHa"
 
     override fun init(context: Context?) {
     }
