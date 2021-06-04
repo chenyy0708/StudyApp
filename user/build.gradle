@@ -6,31 +6,25 @@ plugins {
     id 'maven-publish'
 }
 
-def username = "60b99877395ee4198dade13d"
-def pwd = "G2iSW9O0uPQR"
 def VERSION_NAME = '1.0.1-SNAPSHOT'
-def ARTIFACT_ID = 'user'
-def GROUP_ID = 'com.example.study'
-
-
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: 'https://packages.aliyun.com/maven/repository/2109100-release-4siMok/') {
+            repository(url: rootProject.ext.release_url) {
                 authentication(
-                        userName: username,
-                        password: pwd
+                        userName: rootProject.ext.username,
+                        password: rootProject.ext.password
                 )
             }
-            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2109100-snapshot-bgORc0/') {
+            snapshotRepository(url: rootProject.ext.snapshot_url) {
                 authentication(
-                        userName: username,
-                        password: pwd
+                        userName: rootProject.ext.username,
+                        password: rootProject.ext.password
                 )
             }
             pom.version = VERSION_NAME
-            pom.artifactId = ARTIFACT_ID
-            pom.groupId = GROUP_ID
+            pom.artifactId = project.getName()
+            pom.groupId = rootProject.ext.group
         }
     }
 }
