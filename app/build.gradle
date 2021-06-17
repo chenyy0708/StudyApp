@@ -2,6 +2,14 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'bytex'
+    id 'bytex.refer_check'
+}
+
+ByteX {
+    enable true
+    enableInDebug false
+    logLevel "DEBUG"
 }
 
 android {
@@ -71,6 +79,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
 
 
+    implementation 'org.ow2.asm:asm:9.1'
+
 //    runtimeOnly project(path: ':user')
 //    runtimeOnly project(path: ':shop')
 //    runtimeOnly project(path: ':home')
@@ -80,4 +90,6 @@ dependencies {
     runtimeOnly "com.example.study:home:1.0.3-SNAPSHOT"
     runtimeOnly "com.example.study:shop:1.0.3-SNAPSHOT"
     runtimeOnly "com.example.study:user:1.0.3-SNAPSHOT"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }

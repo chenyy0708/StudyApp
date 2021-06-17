@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -30,7 +32,10 @@
             android:label="RecycleView" />
         <activity
             android:name=".ui.ComponentActivity"
-            android:label="Matrix" />
+            android:label="组件化" />
+        <activity
+            android:name=".ui.MultithreadActivity"
+            android:label="多线程" />
     </application>
 
 </manifest>

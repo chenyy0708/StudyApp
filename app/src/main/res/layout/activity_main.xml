@@ -20,4 +20,11 @@
         android:text="组件化"
         android:textAllCaps="false" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openMultithreading"
+        android:text="多线程并发"
+        android:textAllCaps="false" />
+
 </LinearLayout>
