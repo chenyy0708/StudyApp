@@ -1,16 +1,22 @@
+buildscript {
+    repositories {
+        maven {
+            url uri('../gradle_plugins')
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.example.study:custom-plugin:1.0.0'
+    }
+}
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'bytex'
-    id 'bytex.refer_check'
 }
 
-ByteX {
-    enable true
-    enableInDebug false
-    logLevel "DEBUG"
-}
+apply plugin: 'study.plugin'
 
 android {
     compileSdkVersion 29
@@ -77,9 +83,6 @@ dependencies {
     implementation "com.tencent.tinker:tinker-android-lib:1.9.1"
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-
-
-    implementation 'org.ow2.asm:asm:9.1'
 
 //    runtimeOnly project(path: ':user')
 //    runtimeOnly project(path: ':shop')

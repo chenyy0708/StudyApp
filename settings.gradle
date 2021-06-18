@@ -1,3 +1,4 @@
+include ':custom-plugin'
 include ':service'
 include ':common'
 include ':shop'
