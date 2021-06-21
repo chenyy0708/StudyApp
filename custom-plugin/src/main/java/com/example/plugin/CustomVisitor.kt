@@ -8,7 +8,7 @@ import org.objectweb.asm.Opcodes
  * Created by chenyy on 2021/6/18.
  */
 
-class CustomVisitor(classVisitor: ClassVisitor) : ClassVisitor(Opcodes.ASM6, classVisitor) {
+class CustomVisitor(val classVisitor: ClassVisitor) : ClassVisitor(Opcodes.ASM6, classVisitor) {
 
     /**
      * 该方法是当扫描类时第一个拜访的方法，主要用于类声明使用
@@ -55,7 +55,7 @@ class CustomVisitor(classVisitor: ClassVisitor) : ClassVisitor(Opcodes.ASM6, cla
         signature: String?,
         exceptions: Array<out String>?
     ): MethodVisitor {
-        val mv = super.visitMethod(access, name, descriptor, signature, exceptions)
+        val mv = classVisitor.visitMethod(access, name, descriptor, signature, exceptions)
         val cv = CustomMethodVisitor(mv, access, name ?: "", descriptor ?: "")
         return cv
     }

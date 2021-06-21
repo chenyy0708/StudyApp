@@ -92,7 +92,7 @@ class MethodTransform : Transform() {
                     classReader.accept(cv, EXPAND_FRAMES)
                     val code = classWriter.toByteArray()
                     val fos = FileOutputStream(
-                        file.parentFile.absolutePath + File.separator + name
+                        file.parentFile.absolutePath + File.separator + file.name
                     )
                     fos.write(code)
                     fos.close()
