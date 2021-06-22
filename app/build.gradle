@@ -84,15 +84,15 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
 
-//    runtimeOnly project(path: ':user')
-//    runtimeOnly project(path: ':shop')
-//    runtimeOnly project(path: ':home')
+    runtimeOnly project(path: ':user')
+    runtimeOnly project(path: ':shop')
+    runtimeOnly project(path: ':home')
+    implementation project(path: ':common')
 
-//    implementation project(path: ':common')
-    implementation "com.example.study:common:1.0.1-SNAPSHOT"
-    runtimeOnly "com.example.study:home:1.0.3-SNAPSHOT"
-    runtimeOnly "com.example.study:shop:1.0.3-SNAPSHOT"
-    runtimeOnly "com.example.study:user:1.0.3-SNAPSHOT"
+//    implementation "com.example.study:common:1.0.1-SNAPSHOT"
+//    runtimeOnly "com.example.study:home:1.0.3-SNAPSHOT"
+//    runtimeOnly "com.example.study:shop:1.0.3-SNAPSHOT"
+//    runtimeOnly "com.example.study:user:1.0.3-SNAPSHOT"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }

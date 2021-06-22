@@ -1,3 +1,4 @@
+include ':base_plugin'
 include ':custom-plugin'
 include ':service'
 include ':common'

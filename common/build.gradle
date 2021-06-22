@@ -44,6 +44,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     api "com.alibaba:arouter-api:1.5.1"
-    api "com.example.study:service:1.0.1-SNAPSHOT"
-    //    api project(path: ':service')
+//    api "com.example.study:service:1.0.1-SNAPSHOT"
+        api project(path: ':service')
 }
