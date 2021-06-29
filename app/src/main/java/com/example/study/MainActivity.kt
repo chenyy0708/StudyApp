@@ -1,7 +1,9 @@
 package com.example.study
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope

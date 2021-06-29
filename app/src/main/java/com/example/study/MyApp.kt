@@ -3,17 +3,17 @@ package com.example.study
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.study.asm.AppProxy
 import com.example.study.monitor.LauncherUtils
 
 
 /**
  * Created by chenyy on 2021/5/31.
  */
-
 class MyApp : Application() {
 
-    companion object{
-        var instance:Application? = null
+    companion object {
+        var instance: Application? = null
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -25,5 +25,10 @@ class MyApp : Application() {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        AppProxy.onCreate()
     }
 }

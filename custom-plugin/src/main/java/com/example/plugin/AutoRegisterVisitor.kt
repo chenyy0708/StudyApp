@@ -8,7 +8,13 @@ import org.objectweb.asm.Opcodes
  * Created by chenyy on 2021/6/18.
  */
 
-class CustomVisitor(val classVisitor: ClassVisitor) : ClassVisitor(Opcodes.ASM6, classVisitor) {
+class AutoRegisterVisitor(
+    private val classVisitor: ClassVisitor,
+    private val entryName: String,
+    private val moduleAppLikes: MutableMap<String, String>,
+    private val appLikes: MutableMap<String, String>,
+    private val loader: MutableMap<String, String>
+) : ClassVisitor(Opcodes.ASM6, classVisitor) {
 
     /**
      * 该方法是当扫描类时第一个拜访的方法，主要用于类声明使用
@@ -56,8 +62,32 @@ class CustomVisitor(val classVisitor: ClassVisitor) : ClassVisitor(Opcodes.ASM6,
         exceptions: Array<out String>?
     ): MethodVisitor {
         val mv = classVisitor.visitMethod(access, name, descriptor, signature, exceptions)
-        val cv = CustomMethodVisitor(mv, access, name ?: "", descriptor ?: "")
-        return cv
+        when {
+            appLikes.containsKey(entryName) -> {
+                return AppMethodVisitor(
+                    mv,
+                    access,
+                    name ?: "",
+                    descriptor ?: "",
+                    moduleAppLikes,
+                    appLikes
+                )
+            }
+            loader.containsKey(entryName) -> {
+                return LoaderMethodVisitor(
+                    mv,
+                    access,
+                    name ?: "",
+                    descriptor ?: "",
+                    moduleAppLikes,
+                    appLikes,
+                    loader[entryName]
+                )
+            }
+            else -> { // 不需要改动
+                return mv
+            }
+        }
     }
 
     /**

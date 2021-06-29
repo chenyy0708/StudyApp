@@ -40,12 +40,23 @@ abstract class BaseASMTransform : Transform() {
             //遍历directoryInputs
             for (directoryInput in input.directoryInputs) {
                 //处理directoryInputs
-                processDirectoryInput(directoryInput, outputProvider)
+                processDirectoryInput(directoryInput, outputProvider, true)
             }
             //遍历jarInputs
             for (jarInput in input.jarInputs) {
                 //处理jarInputs
-                processJarInput(jarInput, outputProvider)
+                processJarInput(jarInput, outputProvider, true)
+            }
+        }
+        if (isTransformTwo()) {
+            for (input in inputs) {
+                for (directoryInput in input.directoryInputs) {
+                    processDirectoryInput(directoryInput, outputProvider, false)
+                }
+                //遍历jarInputs
+                for (jarInput in input.jarInputs) {
+                    processJarInput(jarInput, outputProvider, false)
+                }
             }
         }
         transformEnd(transformInvocation)
@@ -55,13 +66,17 @@ abstract class BaseASMTransform : Transform() {
 
     abstract fun transformEnd(transformInvocation: TransformInvocation)
 
+    abstract fun isTransformTwo(): Boolean
+
     abstract fun processJarInput(
         jarInput: JarInput,
-        outputProvider: TransformOutputProvider
+        outputProvider: TransformOutputProvider,
+        isFirst: Boolean
     )
 
     abstract fun processDirectoryInput(
         directoryInput: DirectoryInput,
-        outputProvider: TransformOutputProvider
+        outputProvider: TransformOutputProvider,
+        isFirst: Boolean
     )
 }
