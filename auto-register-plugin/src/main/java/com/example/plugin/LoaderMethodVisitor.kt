@@ -15,7 +15,6 @@ class LoaderMethodVisitor(
     name: String,
     descriptor: String,
     private val moduleAppLikes: MutableMap<String, String>,
-    private val appLikes: MutableMap<String, String>,
     private val loader: String?
 ) : AdviceAdapter(Opcodes.ASM6, mv, access, name, descriptor) {
 

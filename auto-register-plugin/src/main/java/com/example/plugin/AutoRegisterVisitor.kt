@@ -1,6 +1,7 @@
 package com.example.plugin
 
 import org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.FieldVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 
@@ -42,7 +43,6 @@ class AutoRegisterVisitor(
         super.visit(version, access, name, signature, superName, interfaces)
     }
 
-
     /**
      * 该方法是当扫描器扫描到类的方法时进行调用
      *
@@ -68,9 +68,7 @@ class AutoRegisterVisitor(
                     mv,
                     access,
                     name ?: "",
-                    descriptor ?: "",
-                    moduleAppLikes,
-                    appLikes
+                    descriptor ?: ""
                 )
             }
             loader.containsKey(entryName) -> {
@@ -80,7 +78,6 @@ class AutoRegisterVisitor(
                     name ?: "",
                     descriptor ?: "",
                     moduleAppLikes,
-                    appLikes,
                     loader[entryName]
                 )
             }

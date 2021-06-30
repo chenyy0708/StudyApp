@@ -29,6 +29,6 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppProxy.onCreate()
+        AppProxy.onCreate(this)
     }
 }

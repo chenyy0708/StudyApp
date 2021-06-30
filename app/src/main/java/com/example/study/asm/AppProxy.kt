@@ -1,5 +1,6 @@
 package com.example.study.asm
 
+import android.app.Application
 import com.example.common.annotation.AppLike
 
 /**
@@ -8,7 +9,7 @@ import com.example.common.annotation.AppLike
 
 @AppLike
 object AppProxy {
-    fun onCreate() {
+    fun onCreate(application: Application) {
 //        ServiceLoader.onCreate()
     }
 }

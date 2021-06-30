@@ -56,7 +56,6 @@ class MethodTransform : BaseASMTransform() {
                 val entryName = jarEntry.name
                 val inputStream = jarFile.getInputStream(jarEntry)
                 if (checkClassFile(entryName)) { // 插桩
-                    println("扫描文件:${entryName}")
                     val classReader = ClassReader(IOUtils.toByteArray(inputStream))
                     val classWriter = ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
                     val cv =
