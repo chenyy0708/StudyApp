@@ -10,18 +10,18 @@ java {
 }
 
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group='com.example.study'
 version='1.0.0'
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('../gradle_plugins'))
-        }
-    }
-}
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: uri('../gradle_plugins'))
+//        }
+//    }
+//}
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

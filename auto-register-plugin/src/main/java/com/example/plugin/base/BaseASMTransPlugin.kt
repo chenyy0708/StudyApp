@@ -1,6 +1,6 @@
 package com.example.plugin.base
 
-import com.android.build.gradle.AppExtension
+import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -10,10 +10,8 @@ import org.gradle.api.Project
 
 abstract class BaseASMTransPlugin<T : Project> : Plugin<T> {
     override fun apply(project: T) {
-        val appExtension = project.extensions.getByType(
-            AppExtension::class.java
-        )
-        appExtension.registerTransform(providerTransform())
+        val extension: BaseExtension? = project.extensions.findByType(BaseExtension::class.java)
+        extension?.registerTransform(providerTransform())
     }
 
     abstract fun providerTransform(): BaseASMTransform
