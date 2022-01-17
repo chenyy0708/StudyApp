@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.hotfix.PatchManipulateImp
+import com.example.study.hotfix.PermissionUtils
 import com.example.study.hotfix.RobustCallBackSample
 import com.example.study.init.TaskStartup
 import com.example.study.ui.ComponentActivity
@@ -19,6 +20,10 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.resume
 import com.meituan.robust.PatchExecutor
 import com.meituan.robust.PatchManipulate
+import com.example.study.hotfix.PermissionUtils.isGrantSDCardReadPermission
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -69,12 +74,43 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openComponentActivity(view: View) {
-        PatchExecutor(applicationContext, PatchManipulateImp(), RobustCallBackSample()).start()
+        if(PermissionUtils.isGrantSDCardReadPermission(this)) {
+            PatchExecutor(applicationContext, PatchManipulateImp(), RobustCallBackSample()).start()
+        }else {
+            PermissionUtils.requestSDCardReadPermission(this, REQUEST_CODE_SDCARD_READ);
+        }
     }
+
+    private val REQUEST_CODE_SDCARD_READ = 1
 
     @Modify
     fun openMultithreading(view: View) {
-        Toast.makeText(this, "未修复", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "已修复", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            REQUEST_CODE_SDCARD_READ -> handlePermissionResult()
+            else -> {
+            }
+        }
+    }
+
+    private fun handlePermissionResult() {
+        if (isGrantSDCardReadPermission(this)) {
+            PatchExecutor(applicationContext, PatchManipulateImp(), RobustCallBackSample()).start()
+        } else {
+            Toast.makeText(
+                this,
+                "failure because without sd card read permission",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
 }
