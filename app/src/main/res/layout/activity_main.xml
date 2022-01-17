@@ -23,14 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="openComponentActivity"
-            android:text="组件化"
+            android:text="加载补丁"
             android:textAllCaps="false" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="openMultithreading"
-            android:text="多线程并发"
+            android:text="测试Hotfix"
             android:textAllCaps="false" />
 
     </LinearLayout>

@@ -12,8 +12,11 @@ buildscript {
 
 plugins {
     id 'com.android.application'
+    //制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application
+//    id 'auto-patch-plugin'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'robust'
 }
 
 apply plugin: 'study.plugin'
@@ -23,7 +26,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.study"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -53,6 +56,32 @@ android {
         enabled = true
     }
 
+    signingConfigs {
+        release {
+            storeFile file('my-release-key.keystore')
+            storePassword '123456'
+            keyAlias 'my-key-alias'
+            keyPassword '123456'
+        }
+        debug {
+            storeFile file('my-release-key.keystore')
+            storePassword '123456'
+            keyAlias 'my-key-alias'
+            keyPassword '123456'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+//    //打patch的时候才需要，如果没有依赖patch插件，不要添加该内容
+//    hotfixConfig{
+//        //patch的包名，不要和bundle的包名一致，可以在后面追加一个.patch
+//        patchPackName 'ctrip.wireless.android.patch'
+//        //patch内容的输入目录 路径的后面需要加上分隔符
+//        hotfixDir 'hotfix_build/outputs/hotfix/'
+//    }
 }
 
 dependencies {
@@ -97,6 +126,8 @@ dependencies {
 //    runtimeOnly "com.example.study:home:1.0.3-SNAPSHOT"
 //    runtimeOnly "com.example.study:shop:1.0.3-SNAPSHOT"
 //    runtimeOnly "com.example.study:user:1.0.3-SNAPSHOT"
+
+    implementation 'ctrip.wireless.android:robust:0.4.99.1'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }

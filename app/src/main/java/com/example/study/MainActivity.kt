@@ -3,16 +3,23 @@ package com.example.study
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import com.example.study.databinding.ActivityMainBinding
+import com.example.study.hotfix.PatchManipulateImp
+import com.example.study.hotfix.RobustCallBackSample
 import com.example.study.init.TaskStartup
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.meituan.robust.patch.annotaion.Modify
 import kotlinx.coroutines.*
 import kotlin.coroutines.resume
+import com.meituan.robust.PatchExecutor
+import com.meituan.robust.PatchManipulate
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,11 +69,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openComponentActivity(view: View) {
-        startActivity(Intent(this, ComponentActivity::class.java))
+        PatchExecutor(applicationContext, PatchManipulateImp(), RobustCallBackSample()).start()
     }
 
+    @Modify
     fun openMultithreading(view: View) {
-        startActivity(Intent(this, MultithreadActivity::class.java))
+        Toast.makeText(this, "未修复", Toast.LENGTH_SHORT).show()
     }
 
 }
