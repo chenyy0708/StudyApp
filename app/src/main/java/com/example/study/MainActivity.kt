@@ -83,9 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE_SDCARD_READ = 1
 
-    @Modify
     fun openMultithreading(view: View) {
-        Toast.makeText(this, "已修复", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "未修复", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRequestPermissionsResult(
