@@ -45,6 +45,9 @@
         <activity
             android:name=".ui.MultithreadActivity"
             android:label="多线程" />
+        <activity
+            android:name=".ui.CoroutineActivity"
+            android:label="协程" />
     </application>
 
 </manifest>

@@ -35,6 +35,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            resValue("bool", "android_god_eye_manual_install", "false") // 是否手动安装，默认false
+            resValue("bool", "android_god_eye_need_notification", "false") // 是否展示通知栏，默认false，生产环境请关闭
+            resValue("integer", "android_god_eye_monitor_port", "5399") // Monitor端口，默认5390
+            resValue("string", "android_god_eye_install_assets_path", "android-godeye-config/release_install.config") // 安装配置文件在assets中的路径
+        }
+
+        debug {
+            resValue("bool", "android_god_eye_manual_install", "false")
+            resValue("bool", "android_god_eye_need_notification", "true")
+            resValue("integer", "android_god_eye_monitor_port", "5399")
+            resValue("string", "android_god_eye_install_assets_path", "android-godeye-config/install.config")
         }
     }
     compileOptions {
@@ -99,4 +111,8 @@ dependencies {
 //    runtimeOnly "com.example.study:user:1.0.3-SNAPSHOT"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
+
+    // 核心模块，必须依赖
+    implementation 'cn.hikyson.godeye:godeye-core:3.4.3'
 }

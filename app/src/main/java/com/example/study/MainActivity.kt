@@ -13,6 +13,16 @@ import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
 import kotlinx.coroutines.*
 import kotlin.coroutines.resume
+import cn.hikyson.godeye.core.exceptions.UninstallException
+
+import cn.hikyson.godeye.core.GodEye
+import cn.hikyson.godeye.core.internal.modules.fps.Fps
+import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo
+import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo
+import com.example.study.ui.CoroutineActivity
+import io.reactivex.functions.Consumer
+import java.lang.Exception
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +30,16 @@ class MainActivity : AppCompatActivity() {
         val start = System.currentTimeMillis()
         logD("开始初始化Task")
 //        AppInitializer.getInstance(this)
-//            .initializeComponent(MapInitializer::class.java)
+//            .initi2alizeComponent(MapInitializer::class.java)
 //        TaskStartup.start()
         logD("初始化Task结束，耗时${System.currentTimeMillis() - start}ms")
-
+        try {
+            GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
+//                logD("fwegwerwerw:$" + it.currentFps + "---" + it.systemFps)
+            }
+        } catch (e: UninstallException) {
+            e.printStackTrace()
+        }
         Thread.sleep(200)
         setContentView(R.layout.activity_main)
         ActivityMainBinding.inflate(layoutInflater).apply {
@@ -67,6 +83,10 @@ class MainActivity : AppCompatActivity() {
 
     fun openMultithreading(view: View) {
         startActivity(Intent(this, MultithreadActivity::class.java))
+    }
+
+    fun openCoroutine(view: View) {
+        startActivity(Intent(this, CoroutineActivity::class.java))
     }
 
 }
