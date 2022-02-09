@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.study.databinding.ActivityCoroutineBinding
 import com.example.study.logD
+import com.sankuai.waimai.router.annotation.RouterUri
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.*
  * Created by chenyy on 2021/5/28.
  */
 
+@RouterUri(path = ["/coroutine"])
 class CoroutineActivity : AppCompatActivity() {
 
     // 将类方法转成lambda
@@ -43,9 +45,11 @@ class CoroutineActivity : AppCompatActivity() {
             delay(500)
             logD("time:${System.currentTimeMillis() - time}------name:${Thread.currentThread().name}")
             emit("1001")
-        }
+        }.flowOn(Dispatchers.IO)
 
         val testA = TestA()
+
+        (1..3).asFlow()
 
         emitFun(testA, "params1")
         lifecycleScope.launch(coroutineExceptionHandler + Dispatchers.Default) {
@@ -63,7 +67,16 @@ class CoroutineActivity : AppCompatActivity() {
                         logD("map1:${it}------name:${Thread.currentThread().name}")
                         "$it---map1"
                     }
-                    .flowOn(Dispatchers.IO) // 每一个flowOn指定的线程控制上面的操作符作用线程，并且可以控制发送数据所在的线程
+                    .flowOn(Dispatchers.IO) // 每一个flowOn指定的线程控制上面的操作符作用线程，并且第一个flowOn可以控制发送数据所在的线程
+                    .onCompletion {
+                        logD("Flow onCompletion:${it?.message ?: ""}")
+                    }
+                    .catch {
+                        logD("Flow catch:${it.message ?: ""}")
+                    }
+                    .apply {
+                        logD("Flow name:${this.javaClass.simpleName}")
+                    }
 //                    .map {
 //                        logD("map2------name:${Thread.currentThread().name}")
 //                        "$it---map2"
@@ -73,11 +86,8 @@ class CoroutineActivity : AppCompatActivity() {
 //                        "$it---map3"
 //                    }
 //                    .flowOn(Dispatchers.Default)
-                    .onCompletion {
-                        logD("flow:完成")
-                    }
                     .collect {
-                        logD("Flow${it}-----name:${Thread.currentThread().name}")
+                        logD("Flow${it}---collect:${Thread.currentThread().name}")
                     }
             }
 //            delay(1)

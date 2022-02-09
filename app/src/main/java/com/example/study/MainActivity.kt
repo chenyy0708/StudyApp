@@ -20,6 +20,7 @@ import cn.hikyson.godeye.core.internal.modules.fps.Fps
 import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo
 import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo
 import com.example.study.ui.CoroutineActivity
+import com.sankuai.waimai.router.Router
 import io.reactivex.functions.Consumer
 import java.lang.Exception
 
@@ -55,17 +56,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch(coroutineExceptionHandler) {
-            logD("step1")
+//            logD("step1")
             val result = withContext(Dispatchers.IO) {
                 read()
             }
-            logD("step2:${result}")
+//            logD("step2:${result}")
         }
     }
 
     private suspend fun read(): String = suspendCancellableCoroutine<String> {
         Thread.sleep(1000L)
-        logD("Thread:${Thread.currentThread().name}")
+//        logD("Thread:${Thread.currentThread().name}")
         it.resume("fwefwef")
     }
 
@@ -86,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openCoroutine(view: View) {
-        startActivity(Intent(this, CoroutineActivity::class.java))
+//        startActivity(Intent(this, CoroutineActivity::class.java))
+        Router.startUri(this, "/coroutine")
     }
-
 }

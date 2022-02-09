@@ -48,6 +48,13 @@
         <activity
             android:name=".ui.CoroutineActivity"
             android:label="协程" />
+
+        <activity android:name=".ui.base.UriProxyActivity" android:exported="true">
+            <intent-filter>
+                <!-- 接收所有scheme为study的外部URI跳转，不区分host和path -->
+                <data android:scheme="study"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

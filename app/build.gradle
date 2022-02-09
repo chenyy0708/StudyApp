@@ -14,6 +14,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'WMRouter'
 }
 
 apply plugin: 'study.plugin'
@@ -115,4 +116,5 @@ dependencies {
 
     // 核心模块，必须依赖
     implementation 'cn.hikyson.godeye:godeye-core:3.4.3'
+    kapt 'io.github.meituan-dianping:compiler:1.2.1'
 }
