@@ -6,24 +6,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
+import cn.hikyson.godeye.core.GodEye
+import cn.hikyson.godeye.core.exceptions.UninstallException
+import cn.hikyson.godeye.core.internal.modules.fps.Fps
 import com.example.study.databinding.ActivityMainBinding
-import com.example.study.init.TaskStartup
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.sankuai.waimai.router.Router
 import kotlinx.coroutines.*
 import kotlin.coroutines.resume
-import cn.hikyson.godeye.core.exceptions.UninstallException
-
-import cn.hikyson.godeye.core.GodEye
-import cn.hikyson.godeye.core.internal.modules.fps.Fps
-import cn.hikyson.godeye.core.internal.modules.fps.FpsInfo
-import cn.hikyson.godeye.core.internal.modules.memory.HeapInfo
-import com.example.study.ui.CoroutineActivity
-import com.sankuai.waimai.router.Router
-import io.reactivex.functions.Consumer
-import java.lang.Exception
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +34,6 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
         Thread.sleep(200)
-        setContentView(R.layout.activity_main)
         ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
         }

@@ -21,6 +21,7 @@ android {
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
+                arg("MODULE_NAME", project.getName())
             }
         }
     }
@@ -55,4 +56,6 @@ dependencies {
 
 
     kapt 'com.alibaba:arouter-compiler:1.2.2'
+
+    kapt project(':compiler')
 }

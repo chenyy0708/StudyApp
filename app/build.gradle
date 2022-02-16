@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.example.study:auto-register-plugin:1.0.0'
+        classpath 'com.example.study:auto-register-plugin:1.0.1'
     }
 }
 
@@ -14,10 +14,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'WMRouter'
 }
 
-apply plugin: 'study.plugin'
+//apply plugin: 'study.plugin'
+apply plugin: 'WMRouter'
 
 android {
     compileSdkVersion 30
@@ -117,4 +117,6 @@ dependencies {
     // 核心模块，必须依赖
     implementation 'cn.hikyson.godeye:godeye-core:3.4.3'
     kapt 'io.github.meituan-dianping:compiler:1.2.1'
+
+    kapt project(':compiler')
 }
