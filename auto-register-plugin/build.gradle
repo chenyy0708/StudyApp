@@ -19,7 +19,7 @@ publishing {
             groupId = 'com.example.study'
             // 翻译过来是 工件ID，我的理解是插件的名字
             artifactId = 'auto-register-plugin'
-            version = '1.0.1'
+            version = '1.0.2'
             // 组件类型，我们的插件其实就是Java组件
             from components.java
         }
@@ -43,6 +43,8 @@ dependencies {
     implementation 'org.ow2.asm:asm:9.1'
     implementation 'org.ow2.asm:asm-util:9.1'
     implementation 'org.ow2.asm:asm-commons:9.1'
+
+    compileOnly project(":interfaces")
 
 }
 

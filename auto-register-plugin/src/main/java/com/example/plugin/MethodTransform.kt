@@ -2,7 +2,6 @@ package com.example.plugin
 
 import com.android.build.api.transform.*
 import com.android.utils.FileUtils
-import com.example.plugin.base.BaseASMTransform
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.compress.utils.IOUtils
 import org.objectweb.asm.ClassReader

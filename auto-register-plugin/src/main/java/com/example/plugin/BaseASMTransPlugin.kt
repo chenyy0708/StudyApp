@@ -1,4 +1,4 @@
-package com.example.plugin.base
+package com.example.plugin
 
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin

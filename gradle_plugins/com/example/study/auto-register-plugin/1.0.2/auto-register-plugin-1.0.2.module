@@ -1,0 +1,94 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.example.study",
+    "module": "auto-register-plugin",
+    "version": "1.0.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "auto-register-plugin-1.0.2.jar",
+          "url": "auto-register-plugin-1.0.2.jar",
+          "size": 67301,
+          "sha512": "d4ffee49882964c3a4dce3ac19a5d600bc7044ec48abfc0ec5f5ecf15e15de86ea20ad4b3264606fbd9f92e3c783852dba485d86023fb46bbdb089efb70d8efc",
+          "sha256": "2fc2e66e743f31ce9d0358979c57d5b42dad130ff7e3da377ded2d2e02eb8319",
+          "sha1": "f13fed01772ac95aa912dbab1c57597c8fe7df49",
+          "md5": "e18a67e104836967bbac8098cc1231b8"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.5.21"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-util",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-commons",
+          "version": {
+            "requires": "9.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "auto-register-plugin-1.0.2.jar",
+          "url": "auto-register-plugin-1.0.2.jar",
+          "size": 67301,
+          "sha512": "d4ffee49882964c3a4dce3ac19a5d600bc7044ec48abfc0ec5f5ecf15e15de86ea20ad4b3264606fbd9f92e3c783852dba485d86023fb46bbdb089efb70d8efc",
+          "sha256": "2fc2e66e743f31ce9d0358979c57d5b42dad130ff7e3da377ded2d2e02eb8319",
+          "sha1": "f13fed01772ac95aa912dbab1c57597c8fe7df49",
+          "md5": "e18a67e104836967bbac8098cc1231b8"
+        }
+      ]
+    }
+  ]
+}

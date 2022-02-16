@@ -27,7 +27,7 @@ public class Const {
 
     public static final char DOT = '.';
 
-    public static final String INIT_METHOD = "init";
+
 
     // Library中的类名
     public static final String PAGE_ANNOTATION_HANDLER_CLASS =
@@ -61,12 +61,18 @@ public class Const {
     public static final String FRAGMENT_ANDROID_X_CLASS = "androidx.fragment.app.Fragment";
     public static final String FRAGMENT_V4_CLASS = "android.support.v4.app.Fragment";
 
+    public static final String MODULE_INIT_NAME = "ModuleInit_";
+
     public static final String MODULE_LIKE_CLASS = "com.example.common.BaseAppLike";
 
-    public static final String MODULE_LIKE_PACKAGE_NAME = "com.example.modulelike.generated";
+    public static final String MODULE_LIKE_GENE_PACKAGE = "com.example.modulelike.generated";
 
+    /**
+     * ServiceLoader初始化
+     */
+    public static final String MODULE_LOADER_INIT = MODULE_LIKE_GENE_PACKAGE + ".ModuleLoaderInit";
 
-    public static final String KEY_MODULE_NAME = "MODULE_NAME";
+    public static final String INIT_METHOD = "init";
 
 
 }

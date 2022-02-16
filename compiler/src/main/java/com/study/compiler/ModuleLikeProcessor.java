@@ -1,8 +1,9 @@
 package com.study.compiler;
 
-import com.example.common.BaseAppLike;
 import com.example.common.annotation.ModuleLike;
+import com.example.common.utils.ModuleProvider;
 import com.google.auto.service.AutoService;
+import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
@@ -15,10 +16,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -53,7 +51,6 @@ public class ModuleLikeProcessor extends AbstractProcessor {
     protected Types types;
     protected Elements elements;
 
-    private String moduleName;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
@@ -62,10 +59,6 @@ public class ModuleLikeProcessor extends AbstractProcessor {
         types = processingEnvironment.getTypeUtils();
         elements = processingEnvironment.getElementUtils();
         Map<String, String> options = processingEnv.getOptions();
-        if (options!=null) {
-            moduleName = options.get(Const.KEY_MODULE_NAME);
-        }
-        System.out.println("ModuleLikeProcessor:" + moduleName);
     }
 
     @Override
@@ -73,54 +66,47 @@ public class ModuleLikeProcessor extends AbstractProcessor {
         return Collections.singleton(ModuleLike.class.getName());
     }
 
+    /**
+     * 生成ModuleInit_xxxxx.class类
+     * <p>
+     * public final class ModuleInit_2d7104b00a3c90bfd19194053b298ae5 {
+     * public static void init() {
+     * ModuleProvider.register("com.example.user.UserAppLike");
+     * .....
+     * .....
+     * .....
+     * }
+     * }
+     */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println("================ModuleLikeProcessor" + annotations.toString() + "-----" + roundEnv.processingOver() + "------" + roundEnv.toString() + "================");
+        System.out.println("================ModuleLikeProcessor================");
 
-        if (!annotations.isEmpty() && !roundEnv.processingOver()) {
+        if (!annotations.isEmpty() && !roundEnv.processingOver()) { // 扫描所有的注解标记的类
             Set<? extends Element> annotatedWith = roundEnv.getElementsAnnotatedWith(ModuleLike.class);
             for (Element element : annotatedWith) {
                 Symbol.ClassSymbol cls = (Symbol.ClassSymbol) element;
                 boolean isLike = isModuleLike(element);
-                if (isLike) {
+                if (isLike && cls != null) {
                     if (mHash == null) {
                         mHash = hash(cls.className());
                     }
                     String className = cls.toString();
                     mLikeMaps.put(className, new LikeModel(className, cls.getSimpleName() + "_" + mHash));
                 }
-
             }
-        } else if (roundEnv.processingOver()) { // 生成类
-            MethodSpec load = MethodSpec.methodBuilder("load")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(BaseAppLike.class)
-                    .addParameter(String.class, "clazzName")
-                    .beginControlFlow("try")
-                    .addStatement("$T clazz = $T.forName(clazzName)", Class.class, Class.class)
-                    .addStatement("return ($T) clazz.newInstance()", BaseAppLike.class)
-                    .nextControlFlow("catch($T e)", Exception.class)
-                    .addStatement("e.printStackTrace()")
-                    .endControlFlow()
-                    .addStatement("return null")
-                    .build();
+        } else if (roundEnv.processingOver()) { // 生成ModuleInit_xxx.class
             MethodSpec.Builder initBuild = MethodSpec.methodBuilder("init")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(void.class)
-                    .addStatement("$T<$T> moduleLikes = new $T<>()", ArrayList.class, BaseAppLike.class, ArrayList.class);
-            for (Map.Entry<String, LikeModel> entry : mLikeMaps.entrySet()) {
-                initBuild.addStatement("moduleLikes.add(load($S))", entry.getValue().getClassName());
+                    .returns(void.class);
+            for (Map.Entry<String, LikeModel> entry : mLikeMaps.entrySet()) { // 对收集的类进行注册
+                initBuild.addStatement("$T.register($L.class)", ModuleProvider.class, className(entry.getValue().getClassName()));
             }
-            MethodSpec init = initBuild.beginControlFlow("for ($T moduleLike : moduleLikes)", BaseAppLike.class)
-                    .addStatement(" moduleLike.onCreate()")
-                    .endControlFlow()
-                    .build();
-            TypeSpec ServiceLoader = TypeSpec.classBuilder("ModuleInit_" + mHash)
+            TypeSpec ServiceLoader = TypeSpec.classBuilder(Const.MODULE_INIT_NAME + mHash)
                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-                    .addMethod(init)
-                    .addMethod(load)
+                    .addMethod(initBuild.build())
                     .build();
-            JavaFile javaFile = JavaFile.builder(Const.MODULE_LIKE_PACKAGE_NAME, ServiceLoader)
+            JavaFile javaFile = JavaFile.builder(Const.MODULE_LIKE_GENE_PACKAGE, ServiceLoader)
                     .build();
             try {
                 javaFile.writeTo(processingEnv.getFiler());
@@ -196,6 +182,13 @@ public class ModuleLikeProcessor extends AbstractProcessor {
         } catch (NoSuchAlgorithmException e) {
             return Integer.toHexString(str.hashCode());
         }
+    }
+
+    /**
+     * 从字符串获取ClassName对象
+     */
+    public ClassName className(String className) {
+        return ClassName.get(typeElement(className));
     }
 }
 

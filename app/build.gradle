@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.example.study:auto-register-plugin:1.0.1'
+        classpath 'com.example.study:auto-register-plugin:1.0.2'
     }
 }
 
@@ -16,7 +16,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-//apply plugin: 'study.plugin'
+apply plugin: 'study.plugin'
 apply plugin: 'WMRouter'
 
 android {

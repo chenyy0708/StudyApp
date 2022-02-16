@@ -29,11 +29,11 @@
         {
           "name": "auto-register-plugin-1.0.1.jar",
           "url": "auto-register-plugin-1.0.1.jar",
-          "size": 21091,
-          "sha512": "cd3b1e1ff2556b201e75a00749f24697937d77905da65e27c22075a8b6ab6196b2b77fc6af32fadd290d1a74705d09b6330e99d362c72255a3e761a9ca2ec8a7",
-          "sha256": "faeba7be2555319580e5b6dcfb3e277e8d9a0056e9e07dd639133c0f5bf5d048",
-          "sha1": "c2f3fa2097246be636003cbbd433c7337fa71de9",
-          "md5": "272b267023de67e9853d86a65f41a2ba"
+          "size": 67326,
+          "sha512": "1dd0f8176a1711f1996ed0c9e535206af6a0dcdc098722085adde1f53e384ca642ee03e03f346269f3e9da7d97113907cb9fca729c2b103564a6e94d03910c3c",
+          "sha256": "dd9de703454ac4eb65564a1ffd59bcf5921110ae3c89bf070c0e4e685cc3d310",
+          "sha1": "e6d9810e7d8a48a004fc7fd8187fa960b15c0385",
+          "md5": "75242c847cc814088432a91f29581d46"
         }
       ]
     },
@@ -76,17 +76,24 @@
           "version": {
             "requires": "9.1"
           }
+        },
+        {
+          "group": "Study",
+          "module": "interfaces",
+          "version": {
+            "requires": "unspecified"
+          }
         }
       ],
       "files": [
         {
           "name": "auto-register-plugin-1.0.1.jar",
           "url": "auto-register-plugin-1.0.1.jar",
-          "size": 21091,
-          "sha512": "cd3b1e1ff2556b201e75a00749f24697937d77905da65e27c22075a8b6ab6196b2b77fc6af32fadd290d1a74705d09b6330e99d362c72255a3e761a9ca2ec8a7",
-          "sha256": "faeba7be2555319580e5b6dcfb3e277e8d9a0056e9e07dd639133c0f5bf5d048",
-          "sha1": "c2f3fa2097246be636003cbbd433c7337fa71de9",
-          "md5": "272b267023de67e9853d86a65f41a2ba"
+          "size": 67326,
+          "sha512": "1dd0f8176a1711f1996ed0c9e535206af6a0dcdc098722085adde1f53e384ca642ee03e03f346269f3e9da7d97113907cb9fca729c2b103564a6e94d03910c3c",
+          "sha256": "dd9de703454ac4eb65564a1ffd59bcf5921110ae3c89bf070c0e4e685cc3d310",
+          "sha1": "e6d9810e7d8a48a004fc7fd8187fa960b15c0385",
+          "md5": "75242c847cc814088432a91f29581d46"
         }
       ]
     }

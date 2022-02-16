@@ -2,7 +2,7 @@ package com.example.study.asm
 
 import android.app.Application
 import com.example.common.annotation.AppLike
-import com.example.common.init.ModuleHelper
+import com.example.common.utils.ModuleProvider
 
 /**
  * Created by chenyy on 2021/6/28.
@@ -11,7 +11,6 @@ import com.example.common.init.ModuleHelper
 @AppLike
 object AppProxy {
     fun onCreate(application: Application) {
-//        ServiceLoader.onCreate()
-        ModuleHelper.init(application)
+        ModuleProvider.init()
     }
 }
