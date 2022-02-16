@@ -3,7 +3,7 @@ package com.example.study
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
-import com.example.study.asm.AppProxy
+import com.example.study.asm.ApplicationProxy
 import com.sankuai.waimai.router.Router
 import com.sankuai.waimai.router.common.DefaultRootUriHandler
 
@@ -33,6 +33,6 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppProxy.onCreate(this)
+        ApplicationProxy.onCreate(this)
     }
 }

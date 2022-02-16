@@ -12,15 +12,17 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url = "$rootDir/gradle_plugins"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // 添加WMRouter插件
         classpath "io.github.meituan-dianping:plugin:1.2.1"
+        classpath 'com.example.study:auto-register-plugin:1.0.3'
 //        classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -44,6 +46,9 @@ allprojects {
                 password "G2iSW9O0uPQR"
             }
             url 'https://packages.aliyun.com/maven/repository/2109100-snapshot-bgORc0/'
+        }
+        maven {
+            url = "$rootDir/gradle_plugins"
         }
     }
 }

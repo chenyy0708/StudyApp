@@ -1,33 +1,20 @@
-buildscript {
-    repositories {
-        maven {
-            url uri('../gradle_plugins')
-        }
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.example.study:auto-register-plugin:1.0.2'
-    }
-}
-
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'WMRouter'
+    id 'Study'
 }
 
-apply plugin: 'study.plugin'
-apply plugin: 'WMRouter'
-
 android {
-    compileSdkVersion 30
+    compileSdkVersion project.properties.'compileSdkVersion' as int
 
     defaultConfig {
         applicationId "com.example.study"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.properties.'minSdkVersion'
+        targetSdkVersion project.properties.'targetSdkVersion'
+        versionCode project.properties.'versionCode' as int
+        versionName project.properties.'versionName'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

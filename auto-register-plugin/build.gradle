@@ -19,7 +19,7 @@ publishing {
             groupId = 'com.example.study'
             // 翻译过来是 工件ID，我的理解是插件的名字
             artifactId = 'auto-register-plugin'
-            version = '1.0.2'
+            version = '1.0.3'
             // 组件类型，我们的插件其实就是Java组件
             from components.java
         }
