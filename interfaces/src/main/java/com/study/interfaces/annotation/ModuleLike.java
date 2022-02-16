@@ -1,4 +1,4 @@
-package com.example.common.annotation;
+package com.study.interfaces.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

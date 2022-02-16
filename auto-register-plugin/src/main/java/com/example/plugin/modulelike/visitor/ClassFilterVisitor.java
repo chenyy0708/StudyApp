@@ -1,7 +1,8 @@
 package com.example.plugin.modulelike.visitor;
 
 
-import com.study.interfaces.Const;
+
+import com.example.modulelike.core.Const;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;

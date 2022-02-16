@@ -1,15 +1,15 @@
 package com.study.compiler;
 
-import com.example.common.annotation.ModuleLike;
-import com.example.common.utils.ModuleProvider;
+import com.example.modulelike.core.Const;
+import com.example.modulelike.core.LikeModel;
+import com.example.modulelike.core.ModuleProvider;
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
-import com.study.interfaces.Const;
-import com.study.interfaces.LikeModel;
+import com.study.interfaces.annotation.ModuleLike;
 import com.sun.tools.javac.code.Symbol;
 
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class ModuleLikeProcessor extends AbstractProcessor {
                 }
             }
         } else if (roundEnv.processingOver()) { // 生成ModuleInit_xxx.class
-            MethodSpec.Builder initBuild = MethodSpec.methodBuilder("init")
+            MethodSpec.Builder initBuild = MethodSpec.methodBuilder(Const.INIT_METHOD)
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(void.class);
             for (Map.Entry<String, LikeModel> entry : mLikeMaps.entrySet()) { // 对收集的类进行注册

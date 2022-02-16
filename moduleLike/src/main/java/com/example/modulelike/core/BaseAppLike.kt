@@ -1,4 +1,4 @@
-package com.example.common
+package com.example.modulelike.core
 
 /**
  * Created by chenyy on 2021/6/22.

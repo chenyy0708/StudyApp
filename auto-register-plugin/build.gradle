@@ -45,6 +45,7 @@ dependencies {
     implementation 'org.ow2.asm:asm-commons:9.1'
 
     compileOnly project(":interfaces")
+    compileOnly project(":moduleLike")
 
 }
 

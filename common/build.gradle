@@ -7,4 +7,5 @@ dependencies {
     api project(path: ':launcher')
     api 'io.github.meituan-dianping:router:1.2.1'
     api project(":interfaces")
+    api project(":moduleLike")
 }

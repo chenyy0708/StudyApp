@@ -6,6 +6,7 @@ import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.example.modulelike.core.Const
 import com.example.plugin.base.BaseTransform
 import com.example.plugin.base.DeleteCallBack
 import com.example.plugin.base.TransformCallBack
@@ -13,12 +14,10 @@ import com.example.plugin.base.utils.ClassUtils
 import com.example.plugin.base.utils.Log
 import com.example.plugin.modulelike.visitor.ClassFilterVisitor
 import com.google.common.collect.ImmutableSet
-import com.study.interfaces.Const
 import org.apache.commons.compress.utils.IOUtils
 import org.objectweb.asm.*
 import java.io.*
 import java.util.*
-import java.util.concurrent.ConcurrentHashMap
 
 
 /**

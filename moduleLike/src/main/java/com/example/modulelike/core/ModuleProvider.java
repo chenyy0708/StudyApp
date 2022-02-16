@@ -1,6 +1,6 @@
-package com.example.common.utils;
+package com.example.modulelike.core;
 
-import com.example.common.BaseAppLike;
+import com.example.modulelike.utils.ReflectUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +19,8 @@ public class ModuleProvider {
 
     public static void init() {
         try {
-            Class clazz = Class.forName("com.example.modulelike.generated.ModuleLoaderInit");
-            ReflectUtils.invokeStaticMethod(clazz, "init");
+            Class clazz = Class.forName(Const.MODULE_LOADER_INIT);
+            ReflectUtils.invokeStaticMethod(clazz, Const.INIT_METHOD);
             for (Map.Entry<String, BaseAppLike> entry : moduleLikes.entrySet()) {
                 if (entry != null && entry.getValue() != null) entry.getValue().onCreate();
             }

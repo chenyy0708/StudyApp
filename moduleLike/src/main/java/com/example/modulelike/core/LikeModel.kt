@@ -1,4 +1,4 @@
-package com.study.interfaces
+package com.example.modulelike.core
 
 /**
  * Created by chenyy on 2022/2/14.

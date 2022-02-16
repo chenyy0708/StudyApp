@@ -30,10 +30,10 @@
           "name": "auto-register-plugin-1.0.3.jar",
           "url": "auto-register-plugin-1.0.3.jar",
           "size": 48097,
-          "sha512": "1cdaefe8600ec6594764f5022c549c5f00fa1810152304d24f3eb2ae4e923c0d281cf114ab2de23d34655be9c4fdbda065a75d3a18880e468297303ae6c49390",
-          "sha256": "250503b49200eb47ccbecd584830098c6d5097fadd94416bbf5475f655d83e1e",
-          "sha1": "556811a8af78f1777f14f437dba43ab460428807",
-          "md5": "3fde2938bac508732fda24d732a6c973"
+          "sha512": "ceedc0df333f6079540df64a42887166794ca230c5f66e74802a8688adfc64b45d0aba5d313095848d970932fdf638c86c7125482362c3d1caa529def708b885",
+          "sha256": "1e73eab8b0d35253603f8905a830cdb9ca47fce3c291c4ee38a3423496b1b20b",
+          "sha1": "221e5a11185e75b1734cdf8bcecb8a46bf3223c2",
+          "md5": "b9d3b0898930bd6c9a17246b3b9f29c5"
         }
       ]
     },
@@ -83,10 +83,10 @@
           "name": "auto-register-plugin-1.0.3.jar",
           "url": "auto-register-plugin-1.0.3.jar",
           "size": 48097,
-          "sha512": "1cdaefe8600ec6594764f5022c549c5f00fa1810152304d24f3eb2ae4e923c0d281cf114ab2de23d34655be9c4fdbda065a75d3a18880e468297303ae6c49390",
-          "sha256": "250503b49200eb47ccbecd584830098c6d5097fadd94416bbf5475f655d83e1e",
-          "sha1": "556811a8af78f1777f14f437dba43ab460428807",
-          "md5": "3fde2938bac508732fda24d732a6c973"
+          "sha512": "ceedc0df333f6079540df64a42887166794ca230c5f66e74802a8688adfc64b45d0aba5d313095848d970932fdf638c86c7125482362c3d1caa529def708b885",
+          "sha256": "1e73eab8b0d35253603f8905a830cdb9ca47fce3c291c4ee38a3423496b1b20b",
+          "sha1": "221e5a11185e75b1734cdf8bcecb8a46bf3223c2",
+          "md5": "b9d3b0898930bd6c9a17246b3b9f29c5"
         }
       ]
     }
