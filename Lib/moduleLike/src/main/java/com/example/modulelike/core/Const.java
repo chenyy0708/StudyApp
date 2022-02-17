@@ -7,8 +7,6 @@ package com.example.modulelike.core;
 public class Const {
     public static final String MODULE_INIT_NAME = "ModuleInit_";
 
-    public static final String MODULE_LIKE_CLASS = "com.example.modulelike.core.BaseAppLike";
-
     public static final String MODULE_LIKE_GENE_PACKAGE = "com.example.modulelike.generated";
 
     /**

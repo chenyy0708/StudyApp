@@ -1,5 +1,6 @@
 package com.study.compiler;
 
+import com.example.modulelike.core.BaseAppLike;
 import com.example.modulelike.core.Const;
 import com.example.modulelike.core.LikeModel;
 import com.example.modulelike.core.ModuleProvider;
@@ -171,7 +172,7 @@ public class ModuleLikeProcessor extends AbstractProcessor {
     }
 
     public boolean isModuleLike(Element element) {
-        return isConcreteSubType(element, Const.MODULE_LIKE_CLASS);
+        return isConcreteSubType(element, BaseAppLike.class.getName());
     }
 
     public static String hash(String str) {
