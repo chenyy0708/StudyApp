@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'WMRouter'
-    id 'Study'
+    id 'Lifecycle'
 }
 
 android {

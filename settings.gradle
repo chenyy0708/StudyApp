@@ -1,5 +1,5 @@
 include ':launcher'
-include ':auto-register-plugin'
+include ':module-plugin'
 include ':service'
 include ':common'
 include ':shop'
@@ -9,4 +9,14 @@ include ':app'
 rootProject.name = "Study"
 include ':interfaces'
 include ':compiler'
-include ':moduleLike'
+include ':moduleLike',':base-plugin'
+project(':home').projectDir = new File('Business/home')
+project(':service').projectDir = new File('Business/service')
+project(':shop').projectDir = new File('Business/shop')
+project(':user').projectDir = new File('Business/user')
+project(':module-plugin').projectDir = new File('Plugin/module-plugin')
+project(':compiler').projectDir = new File('Plugin/compiler')
+project(':base-plugin').projectDir = new File('Plugin/base-plugin')
+project(':interfaces').projectDir = new File('Lib/interfaces')
+project(':launcher').projectDir = new File('Lib/launcher')
+project(':moduleLike').projectDir = new File('Lib/moduleLike')

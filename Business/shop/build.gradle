@@ -1,0 +1,18 @@
+apply from: '../../config/module_build_config.gradle'
+apply from: '../../config/dependencies.gradle'
+
+android {
+    defaultConfig {
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':common')
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    kapt project(':compiler')
+}

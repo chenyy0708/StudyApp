@@ -1,0 +1,89 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "Study",
+    "module": "module-plugin",
+    "version": "unspecified",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lifecycle-plugin-1.3.0.jar",
+          "url": "lifecycle-plugin-1.3.0.jar",
+          "size": 14529,
+          "sha512": "19794283442a6c2e55b67fb887164d21f35511ad85d19dd881bff52e089291e3254af0cc941579f010d8b4f62b44a6cf01b4523ce0466b67e64d34826c1ae1b0",
+          "sha256": "87c0aedf1cca2b055b26e998f893a63e6882e3406f3ec470f9140e471a1deeed",
+          "sha1": "f7bbf90c5998aea61251c81b4df4c060dd27f06f",
+          "md5": "0411a5e90376164dbaf3c32ce7ac293c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.example.study",
+          "module": "base-plugin",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lifecycle-plugin-1.3.0.jar",
+          "url": "lifecycle-plugin-1.3.0.jar",
+          "size": 14529,
+          "sha512": "19794283442a6c2e55b67fb887164d21f35511ad85d19dd881bff52e089291e3254af0cc941579f010d8b4f62b44a6cf01b4523ce0466b67e64d34826c1ae1b0",
+          "sha256": "87c0aedf1cca2b055b26e998f893a63e6882e3406f3ec470f9140e471a1deeed",
+          "sha1": "f7bbf90c5998aea61251c81b4df4c060dd27f06f",
+          "md5": "0411a5e90376164dbaf3c32ce7ac293c"
+        }
+      ]
+    }
+  ]
+}

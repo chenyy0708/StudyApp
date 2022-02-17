@@ -1,0 +1,17 @@
+apply from: '../../config/module_build_config.gradle'
+apply from: '../../config/dependencies.gradle'
+
+android {
+    defaultConfig {
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation "com.alibaba:arouter-api:1.5.1"
+}
