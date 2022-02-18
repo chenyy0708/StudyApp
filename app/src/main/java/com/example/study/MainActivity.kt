@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 //            .initi2alizeComponent(MapInitializer::class.java)
 //        TaskStartup.start()
         logD("初始化Task结束，耗时${System.currentTimeMillis() - start}ms")
-        logD("fwegwerwe:${BaseAppLike::class.java.name}")
         try {
             GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
 //                logD("fwegwerwerw:$" + it.currentFps + "---" + it.systemFps)
