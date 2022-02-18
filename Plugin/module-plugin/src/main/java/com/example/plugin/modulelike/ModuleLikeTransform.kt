@@ -81,7 +81,6 @@ class ModuleLikeTransform : Transform() {
             }
 
             override fun finish() {
-                println("finish--==============")
             }
         })
         baseTransform.setDeleteCallBack(object : DeleteCallBack {

@@ -1,10 +1,11 @@
-include ':app',':launcher',':module-plugin',':service',':common',':shop',':user',':interfaces',':compiler',':moduleLike',':base-plugin',':home'
+include ':app',':launcher',':module-plugin',':service',':common',':shop',':user',':interfaces',':compiler',':ksp-compiler',':moduleLike',':base-plugin',':home'
 project(':home').projectDir = new File('Business/home')
 project(':service').projectDir = new File('Business/service')
 project(':shop').projectDir = new File('Business/shop')
 project(':user').projectDir = new File('Business/user')
 project(':module-plugin').projectDir = new File('Plugin/module-plugin')
 project(':compiler').projectDir = new File('Plugin/compiler')
+project(':ksp-compiler').projectDir = new File('Plugin/ksp-compiler')
 project(':base-plugin').projectDir = new File('Plugin/base-plugin')
 project(':interfaces').projectDir = new File('Lib/interfaces')
 project(':launcher').projectDir = new File('Lib/launcher')

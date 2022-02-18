@@ -30,7 +30,7 @@ publishing {
 
 dependencies {
     implementation gradleApi()//gradle sdk
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
     api 'com.android.tools.build:gradle:4.1.3'
     api 'com.android.tools.build:gradle-api:4.1.3'
     api 'org.ow2.asm:asm:9.1'

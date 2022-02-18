@@ -38,11 +38,11 @@
         {
           "name": "lifecycle-plugin-1.3.0.jar",
           "url": "lifecycle-plugin-1.3.0.jar",
-          "size": 14604,
-          "sha512": "01f17c1b69f307a7e8e1fb02508df07ff2240ee1ae50087783b5c49f515947e0908acf688d5efd6dc4ba585cff93b8918a3ece57966bce336886ecaa0b263952",
-          "sha256": "08425eed7526cdcd0e578f0440eb49429a931c2d2c5ccd8ea9b7691f056d9359",
-          "sha1": "89028676b0ca5d236d1c7bdd8f385d6e098fd562",
-          "md5": "cf412f63e6303728c7d1a0822407c25f"
+          "size": 14831,
+          "sha512": "a5ef0fd635a738b01e782998124848f1937cc694dd720b8a51d91ea623239b78d7d7af600d8551705faa1c81df9a16ddf9c2b779ac0a58182eed5643a19bb6ca",
+          "sha256": "417426468526d0f0cc353ec2f2667dfc5e77bfca89aad2ec018d828fe373cd03",
+          "sha1": "c57a43ca8794fdb6ad24c55f39e3fa51e29f57a5",
+          "md5": "150a4456e1f9a7e6902a302bfb447a33"
         }
       ]
     },
@@ -77,11 +77,11 @@
         {
           "name": "lifecycle-plugin-1.3.0.jar",
           "url": "lifecycle-plugin-1.3.0.jar",
-          "size": 14604,
-          "sha512": "01f17c1b69f307a7e8e1fb02508df07ff2240ee1ae50087783b5c49f515947e0908acf688d5efd6dc4ba585cff93b8918a3ece57966bce336886ecaa0b263952",
-          "sha256": "08425eed7526cdcd0e578f0440eb49429a931c2d2c5ccd8ea9b7691f056d9359",
-          "sha1": "89028676b0ca5d236d1c7bdd8f385d6e098fd562",
-          "md5": "cf412f63e6303728c7d1a0822407c25f"
+          "size": 14831,
+          "sha512": "a5ef0fd635a738b01e782998124848f1937cc694dd720b8a51d91ea623239b78d7d7af600d8551705faa1c81df9a16ddf9c2b779ac0a58182eed5643a19bb6ca",
+          "sha256": "417426468526d0f0cc353ec2f2667dfc5e77bfca89aad2ec018d828fe373cd03",
+          "sha1": "c57a43ca8794fdb6ad24c55f39e3fa51e29f57a5",
+          "md5": "150a4456e1f9a7e6902a302bfb447a33"
         }
       ]
     }
