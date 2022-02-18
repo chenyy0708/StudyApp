@@ -47,6 +47,7 @@ allprojects {
             }
             url 'https://packages.aliyun.com/maven/repository/2109100-snapshot-bgORc0/'
         }
+        maven { url "https://maven.aliyun.com/repository/public" }
     }
 }
 

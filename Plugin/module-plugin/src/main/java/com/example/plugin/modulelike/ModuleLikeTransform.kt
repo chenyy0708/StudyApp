@@ -71,7 +71,7 @@ class ModuleLikeTransform : Transform() {
         val baseTransform = BaseTransform(transformInvocation, object : TransformCallBack {
             override fun process(className: String, classBytes: ByteArray?): ByteArray? {
                 val checkClassName = ClassUtils.path2Classname(className)
-                if (checkClassName.startsWith(Const.MODULE_LIKE_GENE_PACKAGE)) {
+                if (checkClassName.startsWith(Const.MODULE_LIKE_GENE_PACKAGE) && !checkClassName.contains("$")) {
                     Log.info(
                         TRANSFORM.toString() + "className = %s, checkClassName = %s  className:${className}，checkClassName:${checkClassName}",
                     )
@@ -143,7 +143,7 @@ class ModuleLikeTransform : Transform() {
                     input = input.replace(".", "/")
                     mv.visitMethodInsn(
                         Opcodes.INVOKESTATIC, input,
-                        "init",
+                        Const.INIT_METHOD,
                         "()V",
                         false
                     )

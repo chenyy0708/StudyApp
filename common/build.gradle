@@ -8,4 +8,5 @@ dependencies {
     api 'io.github.meituan-dianping:router:1.2.1'
     api project(":interfaces")
     api project(":moduleLike")
+    api 'com.hi-dhl:binding:1.1.3'
 }

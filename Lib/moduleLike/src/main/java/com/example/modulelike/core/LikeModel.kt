@@ -5,6 +5,6 @@ package com.example.modulelike.core
  */
 
 data class LikeModel(
+    val pkgName:String,
     val className:String,
-    val name:String,
 )

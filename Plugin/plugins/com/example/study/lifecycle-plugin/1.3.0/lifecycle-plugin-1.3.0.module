@@ -1,7 +1,7 @@
 {
   "formatVersion": "1.1",
   "component": {
-    "group": "Study",
+    "group": "卷王",
     "module": "module-plugin",
     "version": "unspecified",
     "attributes": {
@@ -38,11 +38,11 @@
         {
           "name": "lifecycle-plugin-1.3.0.jar",
           "url": "lifecycle-plugin-1.3.0.jar",
-          "size": 14529,
-          "sha512": "19794283442a6c2e55b67fb887164d21f35511ad85d19dd881bff52e089291e3254af0cc941579f010d8b4f62b44a6cf01b4523ce0466b67e64d34826c1ae1b0",
-          "sha256": "87c0aedf1cca2b055b26e998f893a63e6882e3406f3ec470f9140e471a1deeed",
-          "sha1": "f7bbf90c5998aea61251c81b4df4c060dd27f06f",
-          "md5": "0411a5e90376164dbaf3c32ce7ac293c"
+          "size": 14604,
+          "sha512": "01f17c1b69f307a7e8e1fb02508df07ff2240ee1ae50087783b5c49f515947e0908acf688d5efd6dc4ba585cff93b8918a3ece57966bce336886ecaa0b263952",
+          "sha256": "08425eed7526cdcd0e578f0440eb49429a931c2d2c5ccd8ea9b7691f056d9359",
+          "sha1": "89028676b0ca5d236d1c7bdd8f385d6e098fd562",
+          "md5": "cf412f63e6303728c7d1a0822407c25f"
         }
       ]
     },
@@ -77,11 +77,11 @@
         {
           "name": "lifecycle-plugin-1.3.0.jar",
           "url": "lifecycle-plugin-1.3.0.jar",
-          "size": 14529,
-          "sha512": "19794283442a6c2e55b67fb887164d21f35511ad85d19dd881bff52e089291e3254af0cc941579f010d8b4f62b44a6cf01b4523ce0466b67e64d34826c1ae1b0",
-          "sha256": "87c0aedf1cca2b055b26e998f893a63e6882e3406f3ec470f9140e471a1deeed",
-          "sha1": "f7bbf90c5998aea61251c81b4df4c060dd27f06f",
-          "md5": "0411a5e90376164dbaf3c32ce7ac293c"
+          "size": 14604,
+          "sha512": "01f17c1b69f307a7e8e1fb02508df07ff2240ee1ae50087783b5c49f515947e0908acf688d5efd6dc4ba585cff93b8918a3ece57966bce336886ecaa0b263952",
+          "sha256": "08425eed7526cdcd0e578f0440eb49429a931c2d2c5ccd8ea9b7691f056d9359",
+          "sha1": "89028676b0ca5d236d1c7bdd8f385d6e098fd562",
+          "md5": "cf412f63e6303728c7d1a0822407c25f"
         }
       ]
     }

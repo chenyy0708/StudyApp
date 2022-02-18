@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.study.databinding.ActivityCoroutineBinding
 import com.example.study.logD
+import com.hi.dhl.binding.viewbind
 import com.sankuai.waimai.router.annotation.RouterUri
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -18,13 +19,13 @@ class CoroutineActivity : AppCompatActivity() {
 
     // 将类方法转成lambda
     private val emitFun = TestA::print as Function2<TestA, String, Unit>
+    private val binding:ActivityCoroutineBinding by viewbind()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ActivityCoroutineBinding.inflate(layoutInflater).apply {
-            setContentView(root)
-        }
+        binding.let {
 
+        }
         val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
             logD("Exception:${throwable.message}")
         }
