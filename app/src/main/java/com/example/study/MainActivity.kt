@@ -15,13 +15,21 @@ import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
 import com.sankuai.waimai.router.Router
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import javax.inject.Inject
 import kotlin.coroutines.resume
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject lateinit var user:AnalyticsService//定义一个User对线
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val start = System.currentTimeMillis()
+        user.analyticsMethods()
+        logD("analytics:$user")
         logD("开始初始化Task")
 //        AppInitializer.getInstance(this)
 //            .initi2alizeComponent(MapInitializer::class.java)

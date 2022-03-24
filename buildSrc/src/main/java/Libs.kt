@@ -49,4 +49,8 @@ object Libs {
     const val A_ROUTER_COMPILER = "com.alibaba:arouter-compiler:1.2.2"
     const val A_ROUTER = "com.alibaba:arouter-api:1.5.1"
     const val BINDING = "com.hi-dhl:binding:1.1.3"
+    const val HILT = "com.google.dagger:hilt-android:2.36"
+    const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:2.36"
+    const val HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.36"
+
 }

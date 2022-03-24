@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("WMRouter")
     id("Lifecycle")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -97,5 +98,7 @@ dependencies {
     implementation(Libs.LEAK_CANARY)
     implementation(Libs.GOD_EYE)
     kapt(Libs.WM_ROUTER_COMPILER)
+    kapt(Libs.HILT_COMPILER)
+    implementation(Libs.HILT)
 }
 

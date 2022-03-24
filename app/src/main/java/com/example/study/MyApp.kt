@@ -6,11 +6,13 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.example.study.asm.ApplicationProxy
 import com.sankuai.waimai.router.Router
 import com.sankuai.waimai.router.common.DefaultRootUriHandler
+import dagger.hilt.android.HiltAndroidApp
 
 
 /**
  * Created by chenyy on 2021/5/31.
  */
+@HiltAndroidApp
 class MyApp : Application() {
 
     companion object {
