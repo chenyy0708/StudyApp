@@ -3,19 +3,26 @@ package com.example.study.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.study.User
 import com.example.study.databinding.ActivityCoroutineBinding
 import com.example.study.logD
 import com.hi.dhl.binding.viewbind
 import com.sankuai.waimai.router.annotation.RouterUri
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
 /**
  * Created by chenyy on 2021/5/28.
  */
 
+@AndroidEntryPoint
 @RouterUri(path = ["/coroutine"])
 class CoroutineActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var user2: User
 
     // 将类方法转成lambda
     private val emitFun = TestA::print as Function2<TestA, String, Unit>
@@ -23,6 +30,8 @@ class CoroutineActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        logD("CoroutineActivity user test:${user2}")
+
         binding.let {
 
         }

@@ -1,35 +1,52 @@
 package com.example.study
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import cn.hikyson.godeye.core.GodEye
 import cn.hikyson.godeye.core.exceptions.UninstallException
 import cn.hikyson.godeye.core.internal.modules.fps.Fps
-import com.example.modulelike.core.BaseAppLike
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.*
+import retrofit2.Retrofit
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var user:AnalyticsService//定义一个User对线
+    @Inject
+    lateinit var analyticsService: AnalyticsService
+    @Inject
+    lateinit var user: User
+    @Inject
+    lateinit var user2: User
+    @Inject
+    lateinit var retrofit: Retrofit
+
+    private val viewModel by viewModels<MVM>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val start = System.currentTimeMillis()
-        user.analyticsMethods()
-        logD("analytics:$user")
+//        analyticsService.analyticsMethods()
+        logD("user test1:${user}")
+        logD("user test2:${user2}")
+        logD("retrofit:${retrofit}")
+        viewModel.test()
+        user.test()
         logD("开始初始化Task")
 //        AppInitializer.getInstance(this)
 //            .initi2alizeComponent(MapInitializer::class.java)
