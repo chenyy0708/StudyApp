@@ -53,7 +53,11 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
-//        compose = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.COMPOSE_VERSION
     }
 
     compileOptions {
@@ -102,5 +106,19 @@ dependencies {
     implementation(Libs.HILT_ANDROID)
     kapt(Libs.HILT_COMPILER)
     implementation(Libs.HILT_VIEW_MODEL)
+
+    implementation("androidx.compose.runtime:runtime:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.foundation:foundation-layout:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.material:material:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.material:material-icons-extended:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.foundation:foundation:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.animation:animation:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}")
+    implementation("androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation("androidx.activity:activity-compose:1.3.1")
 }
 
