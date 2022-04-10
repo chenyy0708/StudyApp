@@ -49,6 +49,9 @@
         <activity
             android:name=".ui.CoroutineActivity"
             android:label="协程" />
+        <activity
+            android:name=".ui.ComposeActivity"
+            android:label="Compose" />
 
         <activity android:name=".ui.base.UriProxyActivity" android:exported="true">
             <intent-filter>

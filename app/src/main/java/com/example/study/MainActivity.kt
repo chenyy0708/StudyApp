@@ -1,12 +1,10 @@
 package com.example.study
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import cn.hikyson.godeye.core.GodEye
@@ -18,7 +16,6 @@ import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -106,5 +103,9 @@ class MainActivity : AppCompatActivity() {
     fun openCoroutine(view: View) {
 //        startActivity(Intent(this, CoroutineActivity::class.java))
         Router.startUri(this, "/coroutine")
+    }
+
+    fun openCompose(view: View) {
+        Router.startUri(this, "/compose")
     }
 }
