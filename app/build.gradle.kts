@@ -98,7 +98,9 @@ dependencies {
     implementation(Libs.LEAK_CANARY)
     implementation(Libs.GOD_EYE)
     kapt(Libs.WM_ROUTER_COMPILER)
+    kapt(Libs.HILT_ANDROID_COMPILER)
+    implementation(Libs.HILT_ANDROID)
     kapt(Libs.HILT_COMPILER)
-    implementation(Libs.HILT)
+    implementation(Libs.HILT_VIEW_MODEL)
 }
 

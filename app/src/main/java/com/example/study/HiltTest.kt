@@ -1,10 +1,13 @@
 package com.example.study
 
+import androidx.lifecycle.SavedStateHandle
+import com.example.study.hilt.MovieRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.ViewModelComponent
 import retrofit2.Retrofit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -56,3 +59,12 @@ object RetrofitModule {
     fun providerRetrofit(): Retrofit =
         Retrofit.Builder().baseUrl("https://www.baodu.com").build()
 }
+
+@Module
+@InstallIn(ViewModelComponent::class)
+object ViewModuleModule {
+    fun provideRepo(handle: SavedStateHandle): MovieRepository {
+        return MovieRepository()
+    }
+}
+
