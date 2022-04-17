@@ -121,5 +121,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
     implementation("androidx.activity:activity-compose:1.3.1")
     implementation("io.coil-kt:coil:2.0.0-rc03")
+    implementation("io.coil-kt:coil-compose:2.0.0-rc03")
+    implementation("com.google.accompanist:accompanist-pager:0.24.6-alpha")
 }
 
