@@ -54,4 +54,8 @@ object Libs {
     const val HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.36"
     const val HILT_COMPILER = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
     const val HILT_VIEW_MODEL = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
+
+    const val TRACING = "androidx.tracing:tracing:1.0.0"
+    const val TRACING_KTX = "androidx.tracing:tracing-ktx:1.0.0"
+
 }

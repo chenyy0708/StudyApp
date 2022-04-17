@@ -14,6 +14,9 @@ dependencies {
     api(Libs.WM_ROUTER)
     api(Libs.BINDING)
 
+    api(Libs.TRACING)
+    api(Libs.TRACING_KTX)
+
     api(project(":service"))
     api(project(":launcher"))
     api(project(":interfaces"))

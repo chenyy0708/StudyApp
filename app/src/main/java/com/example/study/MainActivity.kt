@@ -1,8 +1,13 @@
 package com.example.study
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +15,7 @@ import androidx.lifecycle.whenResumed
 import cn.hikyson.godeye.core.GodEye
 import cn.hikyson.godeye.core.exceptions.UninstallException
 import cn.hikyson.godeye.core.internal.modules.fps.Fps
+import com.example.common.utils.StudyTrace
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
@@ -26,17 +32,23 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var analyticsService: AnalyticsService
+
     @Inject
     lateinit var user: User
+
     @Inject
     lateinit var user2: User
+
     @Inject
     lateinit var retrofit: Retrofit
 
     private val viewModel by viewModels<MVM>()
 
+
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        getContent.launch()
         val start = System.currentTimeMillis()
 //        analyticsService.analyticsMethods()
         logD("user test1:${user}")
@@ -44,11 +56,6 @@ class MainActivity : AppCompatActivity() {
         logD("retrofit:${retrofit}")
         viewModel.test()
         user.test()
-        logD("开始初始化Task")
-//        AppInitializer.getInstance(this)
-//            .initi2alizeComponent(MapInitializer::class.java)
-//        TaskStartup.start()
-        logD("初始化Task结束，耗时${System.currentTimeMillis() - start}ms")
         try {
             GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
 //                logD("fwegwerwerw:$" + it.currentFps + "---" + it.systemFps)
@@ -59,6 +66,14 @@ class MainActivity : AppCompatActivity() {
         Thread.sleep(200)
         ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
+            llContainer.viewTreeObserver.addOnPreDrawListener(object :
+                ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    StudyTrace.end("startApp")
+                    llContainer.viewTreeObserver.removeOnPreDrawListener(this)
+                    return true
+                }
+            })
         }
 
         val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -86,6 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        reportFullyDrawn()
     }
 
     fun openRv(view: View) {
@@ -107,5 +123,13 @@ class MainActivity : AppCompatActivity() {
 
     fun openCompose(view: View) {
         Router.startUri(this, "/compose")
+    }
+
+    val content = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
+            Toast.makeText(this, "权限请求:${success}", Toast.LENGTH_SHORT).show()
+        }
+
+    fun requestPermission(view: View) {
+        content.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE))
     }
 }

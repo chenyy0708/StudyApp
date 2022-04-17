@@ -20,7 +20,7 @@ object Versions {
     val versionCodeMobile = versionCodeBase
     const val COMPILE_SDK = 31
     const val TARGET_SDK = 30
-    const val MIN_SDK = 21
+    const val MIN_SDK = 23
     const val ANDROID_GRADLE_PLUGIN = "7.0.3"
     const val KOTLIN = "1.5.31"
 
