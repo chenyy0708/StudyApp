@@ -135,6 +135,7 @@ class ComposeActivity : AppCompatActivity() {
                         }
                     )
 
+
                 }
                 items(toDoList) {
                     TodoRow(todo = it, onItemClicked = {
