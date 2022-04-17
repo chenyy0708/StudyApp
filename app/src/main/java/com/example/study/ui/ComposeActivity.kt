@@ -227,7 +227,7 @@ class ComposeActivity : AppCompatActivity() {
                         ),
                         Pair(
                             "领克",
-                            "https://img0.baidu.com/it/u=2047125004,2767992774&fm=253&fmt=auto&app=120&f=JPEG?w=864&h=416"
+                            "https://img2.baidu.com/it/u=2410541573,3557804772&fm=253&fmt=auto&app=138&f=JPEG?w=815&h=500"
                         ),
                         Pair(
                             "本田",
@@ -235,7 +235,7 @@ class ComposeActivity : AppCompatActivity() {
                         ),
                         Pair(
                             "宝马",
-                            "https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=1ece7b70e1c27d1eba263dc42bd7adaf/3812b31bb051f8194ce9ca9e9fb44aed2f73e713.jpg"
+                            "https://img2.baidu.com/it/u=64361011,3076899940&fm=253&fmt=auto&app=120&f=JPEG?w=888&h=500"
                         ),
                         Pair(
                             "玛莎拉蒂",
@@ -250,11 +250,11 @@ class ComposeActivity : AppCompatActivity() {
                             .fillMaxWidth(),
                         edgePadding = 6.dp
                     ) {
-                        titleList.forEachIndexed { index, value ->
+                        datas.forEachIndexed { index, value ->
                             Tab(
                                 text = {
                                     Text(
-                                        value,
+                                        datas[index].first,
                                         fontSize = if (tabPager.currentPage == index) 18.sp else 14.sp
                                     )
                                 },
