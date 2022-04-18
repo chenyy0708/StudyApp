@@ -15,47 +15,85 @@
  */
 
 object Libs {
-    const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:" + Versions.KOTLIN
-    const val CORE_KTX = "androidx.core:core-ktx:1.5.0"
-    const val APPCOMPAT = "androidx.appcompat:appcompat:1.3.0"
-    const val MATERIAL = "com.google.android.material:material:1.3.0"
-    const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.0.4"
+    val androidx = listOf(
+        "androidx.constraintlayout:constraintlayout:2.0.4",
+        "com.google.android.material:material:1.3.0",
+        "androidx.appcompat:appcompat:1.3.0",
+    )
+    val test = listOf(
+        "androidx.test.ext:junit:1.1.2",
+        "junit:junit:4.13.2",
+        "androidx.test.espresso:espresso-core:3.3.0",
 
-    const val JUNIT = "junit:junit:4.13.2"
-    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:3.3.0"
-    const val EXT_JUNIT = "androidx.test.ext:junit:1.1.2"
-    const val GLIDE = "com.github.bumptech.glide:glide:" + Versions.GLIDE
-    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:" + Versions.GLIDE
-    const val RX_JAVA = "io.reactivex.rxjava2:rxjava:2.2.21"
-    const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:2.1.1"
-    const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:" + Versions.COROUTINE
-    const val COROUTINES_ANDROID =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:" + Versions.COROUTINE
-    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.3.4"
-    const val LIFECYCLE_RUNTIME_KTX =
-        "androidx.lifecycle:lifecycle-runtime-ktx:" + Versions.LIFECYCLE
-    const val LIFECYCLE_LIVE_DATA_KTX =
-        "androidx.lifecycle:lifecycle-livedata-ktx:" + Versions.LIFECYCLE
-    const val LIFECYCLE_VIEW_MODEL_KTX =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:" + Versions.LIFECYCLE
-    const val DATA_STORE_PREFERENCES = "androidx.datastore:datastore-preferences:1.0.0-beta01"
-    const val DATA_STORE = "androidx.datastore:datastore:1.0.0-beta01"
-    const val APP_STARTUP = "androidx.startup:startup-runtime:1.0.0"
-    const val RETROFIT = "com.squareup.retrofit2:retrofit:2.9.0"
-    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.7"
-    const val GOD_EYE = "cn.hikyson.godeye:godeye-core:3.4.3"
-    const val WM_ROUTER_COMPILER = "io.github.meituan-dianping:compiler:1.2.1"
-    const val WM_ROUTER = "io.github.meituan-dianping:router:1.2.1"
-    const val A_ROUTER_COMPILER = "com.alibaba:arouter-compiler:1.2.2"
+        )
+    val kotlin = listOf(
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINE}",
+        "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
+    )
+
+    val ktx = listOf(
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}",
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}",
+        "androidx.fragment:fragment-ktx:1.3.4",
+        "androidx.core:core-ktx:1.5.0"
+    )
+    val jetPack = listOf(
+        "androidx.startup:startup-runtime:1.0.0",
+        "androidx.datastore:datastore:1.0.0-beta01",
+        "androidx.datastore:datastore-preferences:1.0.0-beta01"
+    )
+    val square = listOf(
+        "com.squareup.retrofit2:retrofit:2.9.0",
+        "com.squareup.leakcanary:leakcanary-android:2.7",
+    )
+    val rxjava = listOf(
+        "io.reactivex.rxjava2:rxjava:2.2.21",
+        "io.reactivex.rxjava2:rxandroid:2.1.1"
+    )
+    val compiler = listOf(
+        "io.github.meituan-dianping:compiler:1.2.1",
+        "com.github.bumptech.glide:compiler:${Versions.GLIDE}",
+        "com.google.dagger:hilt-android-compiler:2.36",
+        "androidx.hilt:hilt-compiler:1.0.0-alpha01",
+    )
+    val router = listOf(
+        "com.alibaba:arouter-api:1.5.1",
+        "io.github.meituan-dianping:router:1.2.1"
+    )
+    val extend = listOf(
+        "com.hi-dhl:binding:1.1.3",
+        "androidx.tracing:tracing:1.0.0",
+        "androidx.tracing:tracing-ktx:1.0.0",
+        "cn.hikyson.godeye:godeye-core:3.4.3",
+        "com.github.bumptech.glide:glide:${Versions.GLIDE}",
+    )
+    val hilt = listOf(
+        "com.google.dagger:hilt-android:2.36",
+        "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
+    )
+    val compose = listOf(
+        "androidx.compose.runtime:runtime:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.foundation:foundation-layout:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.material:material:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.material:material-icons-extended:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.foundation:foundation:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.animation:animation:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}",
+        "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}",
+        "androidx.constraintlayout:constraintlayout-compose:1.0.0",
+        "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
+        "androidx.activity:activity-compose:1.3.1",
+        "com.google.accompanist:accompanist-pager:0.24.6-alpha",
+    )
+    val coil = listOf(
+        "io.coil-kt:coil:2.0.0-rc03",
+        "io.coil-kt:coil-compose:2.0.0-rc03"
+    )
     const val A_ROUTER = "com.alibaba:arouter-api:1.5.1"
-    const val BINDING = "com.hi-dhl:binding:1.1.3"
-    const val HILT_ANDROID = "com.google.dagger:hilt-android:2.36"
-    const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:2.36"
     const val HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.36"
-    const val HILT_COMPILER = "androidx.hilt:hilt-compiler:1.0.0-alpha01"
-    const val HILT_VIEW_MODEL = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
-
-    const val TRACING = "androidx.tracing:tracing:1.0.0"
-    const val TRACING_KTX = "androidx.tracing:tracing-ktx:1.0.0"
-
+    const val A_ROUTER_COMPILER = "com.alibaba:arouter-compiler:1.2.2"
 }

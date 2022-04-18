@@ -10,13 +10,11 @@ apply {
 }
 
 dependencies {
-    api(Libs.A_ROUTER)
-    api(Libs.WM_ROUTER)
-    api(Libs.BINDING)
-
-    api(Libs.TRACING)
-    api(Libs.TRACING_KTX)
-
+    apiList(Libs.router)
+    apiList(Libs.extend)
+    apiList(Libs.square)
+    apiList(Libs.jetPack)
+    apiList(Libs.ktx)
     api(project(":service"))
     api(project(":launcher"))
     api(project(":interfaces"))
