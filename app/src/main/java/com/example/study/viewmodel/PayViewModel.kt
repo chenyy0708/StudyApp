@@ -12,8 +12,10 @@ import com.example.study.ui.PayActivity
 
 class PayViewModel : ViewModel() {
     private var _selfPayTypes = mutableStateListOf<PayActivity.SelfPayModel>()
+    private var _thirdPayTypes = mutableStateListOf<PayActivity.ThirdPayModel>()
     private lateinit var _selectedPayType: MutableState<PayActivity.PayTypeModel>
     val selfPayTypes: MutableList<PayActivity.SelfPayModel> = _selfPayTypes
+    val thirdPayTypes: MutableList<PayActivity.ThirdPayModel> = _thirdPayTypes
 
     val selectedPayType by lazy {
         _selectedPayType
@@ -28,6 +30,20 @@ class PayViewModel : ViewModel() {
                 ), PayActivity.SelfPayModel(
                     title = "招商银行 储蓄卡 (6680)",
                     discount = "立减1-30元", cardInfoId = "6680"
+                )
+            )
+        )
+        _thirdPayTypes.addAll(
+            listOf(
+                PayActivity.ThirdPayModel(
+                    title = "支付宝",
+                    thirdType = "aliPay"
+                ), PayActivity.ThirdPayModel(
+                    title = "微信",
+                    thirdType = "weChat"
+                ), PayActivity.ThirdPayModel(
+                    title = "云闪付",
+                    thirdType = "quickPay"
                 )
             )
         )
