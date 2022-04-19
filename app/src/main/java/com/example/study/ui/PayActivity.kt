@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -130,92 +131,86 @@ class PayActivity : AppCompatActivity() {
     fun PayTypeLayout(payViewModel: PayViewModel = viewModel()) {
         Spacer(modifier = Modifier.height(32.dp))
         payViewModel.getSelfPayTypeModels()
-        Column(
+
+        LazyColumn(
             modifier = Modifier
                 .padding(start = 10.dp, end = 10.dp)
-                .clip(RoundedCornerShape(8.dp))
                 .background(
-                    brush = Brush.verticalGradient(
+                    color = Color.White
+                )
+                .border(
+                    8.dp, /*brush = Brush.verticalGradient(
                         listOf(
                             Color(0xffF5FAFF),
                             Color(0xffE7F3FE)
                         )
-                    )
+                    ),*/ shape = RoundedCornerShape(16.dp), color = Color(0xffF5FAFF)
                 )
-                .padding(all = 4.dp)
+                .clip(RoundedCornerShape(16.dp))
         ) {
-            // 自有支付方式
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color.White)
-            ) {
-                item {
-                    Row(
+            item {
+                Row(
+                    modifier = Modifier
+                        .height(54.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Spacer(modifier = Modifier.width(11.dp))
+                    AsyncImage(
                         modifier = Modifier
-                            .height(54.dp)
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Spacer(modifier = Modifier.width(11.dp))
-                        AsyncImage(
-                            modifier = Modifier
-                                .width(25.dp)
-                                .height(20.dp),
-                            model = "https://raw.githubusercontent.com/chenyy0708/Images/master/img/20220418175233.png",
-                            contentDescription = null
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "程支付",
-                            style = TextStyle(fontSize = 17.sp, fontWeight = FontWeight.W500),
-                            color = Color.Black,
-                        )
-                        Box(
-                            modifier = Modifier
-                                .padding(start = 6.dp)
-                                .background(Color(0xff287CF9), RoundedCornerShape(3.dp))
-                                .padding(2.dp, 3.dp, 2.dp, 3.dp),
-                        ) {
-                            Text(
-                                text = "携程官方",
-                                style = TextStyle(fontSize = 13.sp),
-                                color = Color.White
-                            )
-                        }
-
-                    }
-                    Divider(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(1.dp),
-                        color = Color(0xffE9EAEC),
+                            .width(25.dp)
+                            .height(20.dp),
+                        model = "https://raw.githubusercontent.com/chenyy0708/Images/master/img/20220418175233.png",
+                        contentDescription = null
                     )
-                }
-                itemsIndexed(payViewModel.selfPayTypes) { index, item ->
-                    BankCardItem(item, payViewModel.selectedPayType.value) {
-                        payViewModel.selectPayType(it)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "程支付",
+                        style = TextStyle(fontSize = 17.sp, fontWeight = FontWeight.W500),
+                        color = Color.Black,
+                    )
+                    Box(
+                        modifier = Modifier
+                            .padding(start = 6.dp)
+                            .background(Color(0xff287CF9), RoundedCornerShape(3.dp))
+                            .padding(2.dp, 3.dp, 2.dp, 3.dp),
+                    ) {
+                        Text(
+                            text = "携程官方",
+                            style = TextStyle(fontSize = 13.sp),
+                            color = Color.White
+                        )
                     }
-                }
-                item {
-                    ChangePayType()
-                    TripPoint()
-                }
 
+                }
+                Divider(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1.dp),
+                    color = Color(0xffE9EAEC),
+                )
             }
-            // 三方支付方式
-            LazyColumn(
-                modifier = Modifier
-                    .padding(top = 4.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color.White)
-            ) {
-                itemsIndexed(payViewModel.thirdPayTypes) { index, item ->
-                    ThirdPayItem(item, payViewModel.selectedPayType.value) {
-                        payViewModel.selectPayType(item)
-                    }
+
+            itemsIndexed(payViewModel.selfPayTypes) { index, item ->
+                BankCardItem(item, payViewModel.selectedPayType.value) {
+                    payViewModel.selectPayType(it)
+                }
+            }
+
+            item {
+                ChangePayType()
+                TripPoint()
+                Divider(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(4.dp),
+                    color = Color(0xffF5FAFF),
+                )
+            }
+
+            itemsIndexed(payViewModel.thirdPayTypes) { index, item ->
+                ThirdPayItem(item, payViewModel.selectedPayType.value) {
+                    payViewModel.selectPayType(item)
                 }
             }
         }
