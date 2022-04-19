@@ -47,12 +47,17 @@
             android:onClick="openCompose"
             android:text="Compose"
             android:textAllCaps="false" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="requestPermission"
             android:text="请求存储权限"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="payActivity"
+            android:text="安全支付"
             android:textAllCaps="false" />
     </LinearLayout>
 </layout>

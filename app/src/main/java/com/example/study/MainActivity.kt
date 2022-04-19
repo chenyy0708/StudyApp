@@ -125,6 +125,10 @@ class MainActivity : AppCompatActivity() {
         Router.startUri(this, "/compose")
     }
 
+    fun payActivity(view: View) {
+        Router.startUri(this, "/pay")
+    }
+
     val content = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
             Toast.makeText(this, "权限请求:${success}", Toast.LENGTH_SHORT).show()
         }
