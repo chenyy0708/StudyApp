@@ -5,6 +5,7 @@ plugins {
     id("WMRouter")
     id("Lifecycle")
     id("dagger.hilt.android.plugin")
+//    id("AGPPlugin")
 }
 
 android {

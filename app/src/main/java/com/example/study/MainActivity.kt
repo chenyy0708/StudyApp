@@ -16,6 +16,7 @@ import cn.hikyson.godeye.core.GodEye
 import cn.hikyson.godeye.core.exceptions.UninstallException
 import cn.hikyson.godeye.core.internal.modules.fps.Fps
 import com.example.common.utils.StudyTrace
+import com.example.study.asm.OptimizedThreadAsm
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         logD("user test1:${user}")
         logD("user test2:${user2}")
         logD("retrofit:${retrofit}")
+        OptimizedThreadAsm().test()
         viewModel.test()
         user.test()
         try {

@@ -48,6 +48,8 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.lifecycle.ViewModel
 import coil.compose.AsyncImage
 import com.example.study.MyApp
+import com.example.study.logD
+import com.example.study.ui.compose.ParentLayoutV2
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -68,8 +70,53 @@ class ComposeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             viewModel.addItem((TodoItem("任务1")))
-            TodoActivityScreen(todoViewModel = viewModel)
+//            TodoActivityScreen(todoViewModel = viewModel)
+//            ParentLayout(
+//                modifier = Modifier
+//                    .padding(10.dp)
+//                    .background(Color.Cyan)
+//                    .padding(20.dp)
+//                    .width(400.dp)
+//                    .height(400.dp)
+//            ) {
+//                Text(text = "哈哈哈")
+//                Text(text = "啦啦啦啦1")
+//                Text(text = "啦啦啦啦2")
+//                Text(text = "啦啦啦啦3")
+//                Text(text = "啦啦啦啦4")
+//                Text(text = "啦啦啦啦5")
+//                Text(text = "啦啦啦啦6")
+//                Text(text = "啦啦啦啦7")
+//                Text(text = "啦啦啦啦8")
+//                Text(text = "啦啦啦啦9")
+//                Text(text = "啦啦啦啦10")
+//                Text(text = "啦啦啦啦11")
+//
+//            }
+            val modifier = Modifier
+                .size(100.dp)
+                .background(Color.Red)
+                .padding(10.dp)
+                .background(Color.Blue)
+
+            val name = modifier.foldOut("name:") { element, s ->
+                logD("Modifier:${element::class.java.simpleName}")
+                s + element::class.java.simpleName
+            }
+            logD("Modifier---:${name}")
+
+            ParentLayoutV2(
+                Modifier
+                    .size(100.dp)
+                    .background(Color.Red)
+                    .padding(10.dp)
+                    .background(Color.Blue)
+            ) {
+                Text(text = "啦啦啦啦10")
+                Text(text = "啦啦啦啦11")
+            }
         }
+
     }
 
     @Composable
@@ -246,7 +293,7 @@ class ComposeActivity : AppCompatActivity() {
             constrain(desc) {
                 width = Dimension.fillToConstraints
                 bottom.linkTo(avatar.bottom)
-                end.linkTo(rightIcon.start,margin = 8.dp)
+                end.linkTo(rightIcon.start, margin = 8.dp)
                 start.linkTo(title.start)
             }
 
@@ -295,6 +342,8 @@ class ComposeActivity : AppCompatActivity() {
                 contentScale = ContentScale.Crop,
                 contentDescription = null
             )
+
+
         }
     }
 
