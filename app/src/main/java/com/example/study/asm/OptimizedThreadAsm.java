@@ -9,7 +9,7 @@ public class OptimizedThreadAsm {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                System.out.println("ChenYy");
+                System.out.println("ChenYy:" + Thread.currentThread().getName());
             }
         };
         new Thread(runnable,"thread name").start();

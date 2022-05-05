@@ -23,23 +23,12 @@ class ASMPlugin : Plugin<Project> {
         androidComponents.onVariants { variant ->
             variant.transformClassesWith(
                 ExampleClassVisitorFactory::class.java,
-                InstrumentationScope.ALL
+                InstrumentationScope.PROJECT
             ) {
                 it.writeToStdout.set(true)
             }
             variant.setAsmFramesComputationMode(FramesComputationMode.COPY_FRAMES)
         }
-    }
-
-    companion object {
-
-        private const val threadClass = "java/lang/Thread"
-
-        private const val threadFactoryClass = "java/util/concurrent/ThreadFactory"
-
-        private const val threadFactoryNewThreadMethodDesc =
-            "newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;"
-
     }
 
     interface ExampleParams : InstrumentationParameters {
@@ -54,7 +43,9 @@ class ASMPlugin : Plugin<Project> {
             classContext: ClassContext,
             nextClassVisitor: ClassVisitor
         ): ClassVisitor {
-
+            if(classContext.currentClassData.className.startsWith("com.example.study.asm")) {
+                return OptimizedThreadNode(nextClassVisitor)
+            }
             return if (parameters.get().writeToStdout.get()) {
                 TraceClassVisitor(nextClassVisitor, PrintWriter(System.out))
             } else {
@@ -64,10 +55,17 @@ class ASMPlugin : Plugin<Project> {
 
         override fun isInstrumentable(classData: ClassData): Boolean {
             if (classData.className.startsWith("com.example.study.asm")) {
-                println("==========isInstrumentable${classData.className}====classAnnotations:${classData.classAnnotations}====classAnnotations:${classData.interfaces}====classAnnotations:${classData.superClasses}")
                 return true
             }
+//            return checkClassFile(classData.className)
             return false
         }
+
+        private fun checkClassFile(entryName: String): Boolean {
+            return (entryName.endsWith(".class") && !entryName.startsWith("R\$")
+                    && "R.class" != entryName && "BuildConfig.class" != entryName)
+        }
     }
+
+
 }

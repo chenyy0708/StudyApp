@@ -27,5 +27,5 @@ project(":interfaces").projectDir =  File("Lib/interfaces")
 project(":launcher").projectDir =  File("Lib/launcher")
 project(":moduleLike").projectDir =  File("Lib/moduleLike")
 
-rootProject.name = "卷王"
+//rootProject.name = "卷王"
 

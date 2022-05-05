@@ -36,9 +36,6 @@ dependencies {
     implementation("com.android.tools.build:gradle:7.0.3")
     implementation(kotlin("stdlib"))
     implementation(gradleApi())
-
-    implementation(project(":interfaces"))
-    implementation(project(":moduleLike"))
 }
 dependencies {
     implementation("org.ow2.asm:asm-util:7.0")

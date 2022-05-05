@@ -36,8 +36,8 @@
       ],
       "files": [
         {
-          "name": "lifecycle-plugin-1.3.0.jar",
-          "url": "lifecycle-plugin-1.3.0.jar",
+          "name": "module-plugin-unspecified.jar",
+          "url": "module-plugin-unspecified.jar",
           "size": 14471,
           "sha512": "4f9dbbec546981fa76463c14edcb7a9868f4326d7e1e503e09d1b87019ca4ffa6b4ea6748757e89107efbb1cfe70ad9e66d4f38d13b90bb97ce4acd83eed33a0",
           "sha256": "b3233959427170eee5d1c53e873dd0cfe0400cc29b9128f5e410fef2db8fbb50",
@@ -75,8 +75,8 @@
       ],
       "files": [
         {
-          "name": "lifecycle-plugin-1.3.0.jar",
-          "url": "lifecycle-plugin-1.3.0.jar",
+          "name": "module-plugin-unspecified.jar",
+          "url": "module-plugin-unspecified.jar",
           "size": 14471,
           "sha512": "4f9dbbec546981fa76463c14edcb7a9868f4326d7e1e503e09d1b87019ca4ffa6b4ea6748757e89107efbb1cfe70ad9e66d4f38d13b90bb97ce4acd83eed33a0",
           "sha256": "b3233959427170eee5d1c53e873dd0cfe0400cc29b9128f5e410fef2db8fbb50",
