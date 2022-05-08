@@ -1,0 +1,94 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "study-demo",
+    "module": "agp-asm-plugin",
+    "version": "unspecified",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "agp-asm-plugin-1.0.1.jar",
+          "url": "agp-asm-plugin-1.0.1.jar",
+          "size": 18015,
+          "sha512": "0b5c64f5b6951ce7a4db710ed584c2102c6a16c76d6a6556b1281a61a014d3a4120985e2d5e32aba80f66ea671a7625b4768c55974e3799284b406b6cec2ebad",
+          "sha256": "a7994d98ec0ddfef2e4d2d867158ea0c87955ded184f598c52b8a6a61d36fdce",
+          "sha1": "64bca8a7c10441887b2967ef1b773ca75a918b2e",
+          "md5": "0ee7daf50ac9661c5010b9c544b57e61"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle-api",
+          "version": {
+            "requires": "7.0.3"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "7.0.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.5.31"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-util",
+          "version": {
+            "requires": "7.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "agp-asm-plugin-1.0.1.jar",
+          "url": "agp-asm-plugin-1.0.1.jar",
+          "size": 18015,
+          "sha512": "0b5c64f5b6951ce7a4db710ed584c2102c6a16c76d6a6556b1281a61a014d3a4120985e2d5e32aba80f66ea671a7625b4768c55974e3799284b406b6cec2ebad",
+          "sha256": "a7994d98ec0ddfef2e4d2d867158ea0c87955ded184f598c52b8a6a61d36fdce",
+          "sha1": "64bca8a7c10441887b2967ef1b773ca75a918b2e",
+          "md5": "0ee7daf50ac9661c5010b9c544b57e61"
+        }
+      ]
+    }
+  ]
+}
