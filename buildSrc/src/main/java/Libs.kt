@@ -96,4 +96,18 @@ object Libs {
     const val A_ROUTER = "com.alibaba:arouter-api:1.5.1"
     const val HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.36"
     const val A_ROUTER_COMPILER = "com.alibaba:arouter-compiler:1.2.2"
+
+    const val MATRIX_PLUGIN = "com.tencent.matrix:matrix-gradle-plugin:${Versions.MATRIX_VERSION}"
+
+    val matrix = listOf(
+        "com.tencent.matrix:matrix-android-lib:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-android-commons:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-trace-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-resource-canary-android:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-resource-canary-common:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-io-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-sqlite-lint-android-sdk:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-battery-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-hooks:${Versions.MATRIX_VERSION}",
+    )
 }

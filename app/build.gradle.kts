@@ -6,6 +6,7 @@ plugins {
     id("Lifecycle")
     id("dagger.hilt.android.plugin")
     id("AGPPlugin")
+    id("com.tencent.matrix-plugin")
 }
 
 android {
@@ -87,5 +88,7 @@ dependencies {
     implementationList(Libs.extend)
     implementationList(Libs.rxjava)
     implementationList(Libs.hilt)
+    implementationList(Libs.matrix)
+
 }
 

@@ -12,6 +12,7 @@ buildscript {
         classpath("com.example.study:lifecycle-plugin:1.3.0")
         classpath("com.example.study:agp-asm-plugin:1.0.1")
         classpath(Libs.HILT_PLUGIN)
+        classpath(Libs.MATRIX_PLUGIN)
     }
 }
 
