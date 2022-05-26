@@ -9,6 +9,14 @@ plugins {
     id("com.tencent.matrix-plugin")
 }
 
+matrix {
+    trace {
+        isEnable = true
+        baseMethodMapFile = "${project.buildDir}/matrix_output/Debug.methodmap"
+        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
+    }
+}
+
 android {
     compileSdk = Versions.COMPILE_SDK
     defaultConfig {
@@ -70,6 +78,13 @@ android {
     kotlinOptions {
         val options = this as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
         options.jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        jniLibs.pickFirsts.add("lib/armeabi-v7a/libc++_shared.so")
+        jniLibs.pickFirsts.add("lib/arm64-v8a/libc++_shared.so")
+        jniLibs.pickFirsts.add("lib/armeabi-v7a/libwechatbacktrace.so")
+        jniLibs.pickFirsts.add("lib/arm64-v8a/libwechatbacktrace.so")
     }
 }
 

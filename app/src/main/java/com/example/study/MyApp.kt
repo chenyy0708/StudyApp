@@ -2,15 +2,22 @@ package com.example.study
 
 import android.app.Application
 import android.content.Context
-import android.os.Debug
 import android.os.Looper
 import android.os.MessageQueue
-import androidx.tracing.Trace
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.common.utils.StudyTrace
 import com.example.study.asm.ApplicationProxy
+import com.example.study.matrix.DynamicConfigImplDemo
+import com.example.study.matrix.TestPluginListener
 import com.sankuai.waimai.router.Router
 import com.sankuai.waimai.router.common.DefaultRootUriHandler
+import com.tencent.matrix.Matrix
+import com.tencent.matrix.batterycanary.BatteryMonitorPlugin
+import com.tencent.matrix.batterycanary.monitor.BatteryMonitorCallback
+import com.tencent.matrix.batterycanary.monitor.BatteryMonitorConfig
+import com.tencent.matrix.batterycanary.monitor.feature.JiffiesMonitorFeature
+import com.tencent.matrix.iocanary.IOCanaryPlugin
+import com.tencent.matrix.iocanary.config.IOConfig
 import dagger.hilt.android.HiltAndroidApp
 
 
@@ -50,6 +57,27 @@ class MyApp : Application() {
         })
 //        Debug.stopMethodTracing()
 //        Trace.endSection()
+
+
+        val builder: Matrix.Builder = Matrix.Builder(this) // build matrix
+        builder.pluginListener(TestPluginListener(this)) // add general pluginListener
+        val dynamicConfig = DynamicConfigImplDemo() // dynamic config
+        val ioCanaryPlugin = IOCanaryPlugin(
+            IOConfig.Builder()
+                .dynamicConfig(dynamicConfig)
+                .build()
+        )
+        builder.plugin(ioCanaryPlugin)
+        val config = BatteryMonitorConfig.Builder()
+            .enable(JiffiesMonitorFeature::class.java)
+            .enableStatPidProc(true)
+            .greyJiffiesTime(30 * 1000L)
+            .setCallback(BatteryMonitorCallback.BatteryPrinter())
+            .build()
+        val plugin = BatteryMonitorPlugin(config)
+        builder.plugin(plugin)
+        Matrix.init(builder.build())
+        ioCanaryPlugin.start()
     }
 
     override fun onCreate() {
