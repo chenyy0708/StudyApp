@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
+import androidx.tracing.Trace
 import cn.hikyson.godeye.core.GodEye
 import cn.hikyson.godeye.core.exceptions.UninstallException
 import cn.hikyson.godeye.core.internal.modules.fps.Fps
@@ -21,6 +22,7 @@ import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
+        Trace.beginSection("MainActivity.onCreate")
         super.onCreate(savedInstanceState)
 //        getContent.launch()
         val start = System.currentTimeMillis()
@@ -103,7 +106,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        TimeMonitor.endRecord("launch_app", System.currentTimeMillis())
         reportFullyDrawn()
+        Trace.endSection()
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
     }
 
     fun openRv(view: View) {
@@ -131,11 +140,17 @@ class MainActivity : AppCompatActivity() {
         Router.startUri(this, "/pay")
     }
 
-    val content = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
+    val content =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
             Toast.makeText(this, "权限请求:${success}", Toast.LENGTH_SHORT).show()
         }
 
     fun requestPermission(view: View) {
-        content.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE))
+        content.launch(
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        )
     }
 }

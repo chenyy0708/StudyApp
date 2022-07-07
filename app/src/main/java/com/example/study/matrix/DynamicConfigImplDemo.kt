@@ -32,7 +32,10 @@ class DynamicConfigImplDemo : IDynamicConfig {
     }
 
     override fun get(key: String?, defLong: Long): Long {
-        return 0
+        if (IDynamicConfig.ExptEnum.clicfg_matrix_fps_dropped_normal.name.equals(key)) {
+            return 10000L;
+        }
+        return defLong
     }
 
     override fun get(key: String?, defBool: Boolean): Boolean {
