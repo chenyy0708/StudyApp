@@ -43,15 +43,7 @@ object IdleUtils {
         val rootHandler = DefaultRootUriHandler(MyApp.instance)
         // 初始化
         Router.init(rootHandler)
-
         Thread.sleep(150)
-
-        Looper.getMainLooper()?.queue?.addIdleHandler(object : MessageQueue.IdleHandler {
-            override fun queueIdle(): Boolean {
-                logD("addIdleHandler:${System.currentTimeMillis()}ms")
-                return false
-            }
-        })
         val builder: Matrix.Builder = Matrix.Builder(MyApp.instance) // build matrix
         builder.pluginListener(TestPluginListener(MyApp.instance!!)) // add general pluginListener
         val dynamicConfig = DynamicConfigImplDemo() // dynamic config

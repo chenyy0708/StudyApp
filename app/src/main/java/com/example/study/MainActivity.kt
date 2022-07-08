@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Trace.beginSection("MainActivity.onCreate")
         super.onCreate(savedInstanceState)
-        IdleUtils.execute(IdleUtils.getThirdSDKInitTask())
+        TimeMonitor.startRecord("activity_launch", System.currentTimeMillis())
 //        getContent.launch()
         val start = System.currentTimeMillis()
 //        analyticsService.analyticsMethods()
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             llContainer.viewTreeObserver.addOnPreDrawListener(object :
                 ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
-                    StudyTrace.end("startApp")
+                    TimeMonitor.endRecord("activity_launch", System.currentTimeMillis())
                     llContainer.viewTreeObserver.removeOnPreDrawListener(this)
                     return true
                 }

@@ -60,6 +60,6 @@ object TimeMonitor {
      */
     private fun recordInputTime(key: String?) {
         val time = getInputTime(key)
-        logD(msg = "time:${time},type:${key}")
+        logD(tag = "StudyTrace",msg = "time:${time},type:${key}")
     }
 }
