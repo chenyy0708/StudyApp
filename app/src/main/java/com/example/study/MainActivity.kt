@@ -22,6 +22,7 @@ import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.example.study.utils.IdleUtils
 import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Trace.beginSection("MainActivity.onCreate")
         super.onCreate(savedInstanceState)
+        IdleUtils.execute(IdleUtils.getThirdSDKInitTask())
 //        getContent.launch()
         val start = System.currentTimeMillis()
 //        analyticsService.analyticsMethods()
