@@ -1,6 +1,6 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
-import ctrip.base.launcher.rocket4j.util.ThrowableUtil;
+import com.example.launcher.rocket4j.util.ThrowableUtil;
 
 public class TaskDispatcher extends Thread {
     private TaskQueue mTaskQueue;

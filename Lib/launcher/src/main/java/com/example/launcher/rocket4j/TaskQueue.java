@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
-import ctrip.base.launcher.rocket4j.util.ThreadUtil;
+import com.example.launcher.rocket4j.util.ThreadUtil;
 
 /**
  * 任务队列

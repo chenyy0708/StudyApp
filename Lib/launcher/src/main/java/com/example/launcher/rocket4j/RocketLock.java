@@ -1,7 +1,7 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
-import ctrip.base.launcher.rocket4j.exception.ExceptionData;
-import ctrip.base.launcher.rocket4j.exception.LauncherExceptionHelper;
+import com.example.launcher.rocket4j.exception.ExceptionData;
+import com.example.launcher.rocket4j.exception.LauncherExceptionHelper;
 
 public class RocketLock {
 

@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j.exception;
+package com.example.launcher.rocket4j.exception;
 
 import android.annotation.SuppressLint;
 import android.util.Log;

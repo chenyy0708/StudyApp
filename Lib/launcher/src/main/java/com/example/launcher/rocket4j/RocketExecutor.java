@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
 import android.util.Log;
 
@@ -11,8 +11,8 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import ctrip.base.launcher.rocket4j.exception.ExceptionData;
-import ctrip.base.launcher.rocket4j.exception.LauncherExceptionHelper;
+import com.example.launcher.rocket4j.exception.ExceptionData;
+import com.example.launcher.rocket4j.exception.LauncherExceptionHelper;
 
 public class RocketExecutor implements Executor {
 

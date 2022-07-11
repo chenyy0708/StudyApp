@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j.util;
+package com.example.launcher.rocket4j.util;
 
 import java.util.ArrayList;
 import java.util.List;

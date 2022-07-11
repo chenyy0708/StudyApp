@@ -1,18 +1,17 @@
-package ctrip.base.launcher;
+package com.example.launcher;
 
 import android.os.SystemClock;
 import android.util.Log;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
-import ctrip.base.launcher.rocket4j.Rocket;
-import ctrip.base.launcher.rocket4j.Task;
-import ctrip.base.launcher.rocket4j.TaskQueue;
-import ctrip.base.launcher.rocket4j.util.Log4Rocket;
+import com.example.launcher.rocket4j.Rocket;
+import com.example.launcher.rocket4j.Task;
+import com.example.launcher.rocket4j.TaskQueue;
+import com.example.launcher.rocket4j.util.Log4Rocket;
 
 public class RocketManager {
 

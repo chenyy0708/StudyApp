@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j.util;
+package com.example.launcher.rocket4j.util;
 
 public class Log4Rocket {
     public interface Logger {

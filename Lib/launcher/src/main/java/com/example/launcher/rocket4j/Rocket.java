@@ -1,9 +1,9 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
 import java.util.List;
 
-import ctrip.base.launcher.rocket4j.util.Log4Rocket;
-import ctrip.base.launcher.rocket4j.util.StringUtil;
+import com.example.launcher.rocket4j.util.Log4Rocket;
+import com.example.launcher.rocket4j.util.StringUtil;
 
 public class Rocket {
 

@@ -1,4 +1,4 @@
-package ctrip.base.launcher.rocket4j;
+package com.example.launcher.rocket4j;
 
 import java.util.concurrent.CountDownLatch;
 
