@@ -10,8 +10,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.whenResumed
 import androidx.tracing.Trace
 import cn.hikyson.godeye.core.GodEye
 import cn.hikyson.godeye.core.exceptions.UninstallException
@@ -24,10 +22,9 @@ import com.example.study.ui.RVActivity
 import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.Retrofit
 import javax.inject.Inject
-import kotlin.coroutines.resume
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -52,23 +49,18 @@ class MainActivity : AppCompatActivity() {
         Trace.beginSection("MainActivity.onCreate")
         super.onCreate(savedInstanceState)
         TimeMonitor.startRecord("activity_launch", System.currentTimeMillis())
-//        getContent.launch()
         val start = System.currentTimeMillis()
-//        analyticsService.analyticsMethods()
-        logD("user test1:${user}")
-        logD("user test2:${user2}")
-        logD("retrofit:${retrofit}")
+        analyticsService.analyticsMethods()
         OptimizedThreadAsm().test()
         viewModel.test()
         user.test()
         try {
             GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
-//                logD("fwegwerwerw:$" + it.currentFps + "---" + it.systemFps)
+                logD(tag = "StudyTrace", msg = "当前页面FPS:${it.currentFps}，系统预设FPS:${it.systemFps}")
             }
         } catch (e: UninstallException) {
             e.printStackTrace()
         }
-        Thread.sleep(200)
         ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             llContainer.viewTreeObserver.addOnPreDrawListener(object :
@@ -84,24 +76,6 @@ class MainActivity : AppCompatActivity() {
         val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
             logD("exception:${throwable.message}")
         }
-
-        lifecycleScope.launchWhenResumed {
-            whenResumed { }
-        }
-
-        lifecycleScope.launch(coroutineExceptionHandler) {
-//            logD("step1")
-            val result = withContext(Dispatchers.IO) {
-                read()
-            }
-//            logD("step2:${result}")
-        }
-    }
-
-    private suspend fun read(): String = suspendCancellableCoroutine<String> {
-        Thread.sleep(1000L)
-//        logD("Thread:${Thread.currentThread().name}")
-        it.resume("fwefwef")
     }
 
     override fun onResume() {
@@ -128,7 +102,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openCoroutine(view: View) {
-//        startActivity(Intent(this, CoroutineActivity::class.java))
         Router.startUri(this, "/coroutine")
     }
 
@@ -152,5 +125,9 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
         )
+    }
+
+    fun motionTest(view: View) {
+        Router.startUri(this, "/motionTest")
     }
 }

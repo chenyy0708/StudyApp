@@ -62,7 +62,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        dataBinding = true
+//        dataBinding = true
         compose = true
     }
 
@@ -105,5 +105,7 @@ dependencies {
     implementationList(Libs.hilt)
     implementationList(Libs.matrix)
 
+    debugImplementation("androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}")
+    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}")
 }
 

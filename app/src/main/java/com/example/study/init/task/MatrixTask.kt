@@ -3,6 +3,8 @@ package com.example.study.init.task
 import com.example.study.init.BaseTask
 import com.example.study.matrix.DynamicConfigImplDemo
 import com.example.study.matrix.TestPluginListener
+import com.example.study.utils.ChoreographerMonitor
+import com.example.study.utils.LooperMonitor
 import com.tencent.matrix.Matrix
 import com.tencent.matrix.batterycanary.BatteryMonitorPlugin
 import com.tencent.matrix.batterycanary.monitor.BatteryMonitorCallback
@@ -20,6 +22,7 @@ import com.tencent.matrix.trace.config.TraceConfig
 class MatrixTask : BaseTask("MatrixTask", setOf()) {
 
     override fun run() {
+        LooperMonitor.start()
         val builder: Matrix.Builder = Matrix.Builder(getAppApplication()) // build matrix
         builder.pluginListener(TestPluginListener(getAppApplication()!!)) // add general pluginListener
         val dynamicConfig = DynamicConfigImplDemo() // dynamic config

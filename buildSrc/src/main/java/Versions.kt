@@ -31,4 +31,6 @@ object Versions {
     const val COMPOSE_VERSION = "1.0.4"
 
     const val MATRIX_VERSION = "2.0.8"
+
+    const val MULTIDEX_VERSION = "2.0.1"
 }

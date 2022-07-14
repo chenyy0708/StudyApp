@@ -60,6 +60,10 @@
             android:name=".ui.PayActivity"
             android:label="安全支付" />
         <activity
+            android:theme="@style/Theme.Study.NoActionBar"
+            android:name=".ui.MotionTestActivity"
+            android:label="卡顿分析" />
+        <activity
             android:name=".ui.TestFpsActivity"
             android:label="FPS" />
         <activity android:name=".ui.base.UriProxyActivity" android:exported="true">

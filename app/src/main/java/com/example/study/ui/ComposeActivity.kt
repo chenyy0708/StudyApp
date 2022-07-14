@@ -17,10 +17,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Airplay
-import androidx.compose.material.icons.filled.Book
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -310,11 +306,11 @@ class ComposeActivity : AppCompatActivity() {
                 .background(Color.Cyan),
             constraintSet = constraintSet
         ) {
-            Icon(
-                Icons.Default.Airplay,
-                contentDescription = null,
-                modifier = Modifier.layoutId("rightIcon")
-            )
+//            Icon(
+//                Icons.Default.Airplay,
+//                contentDescription = null,
+//                modifier = Modifier.layoutId("rightIcon")
+//            )
 
             Text(
                 text = "标题",
@@ -402,11 +398,11 @@ class ComposeActivity : AppCompatActivity() {
         IconToggleButton(checked = checkState, onCheckedChange = {
             checkState = it
         }) {
-            Icon(
-                Icons.Filled.Book,
-                contentDescription = null,
-                tint = if (checkState) Color.Yellow else Color.Gray
-            )
+//            Icon(
+//                Icons.Filled.Book,
+//                contentDescription = null,
+//                tint = if (checkState) Color.Yellow else Color.Gray
+//            )
         }
         var text by remember { mutableStateOf("") }
         TextField(
@@ -419,10 +415,10 @@ class ComposeActivity : AppCompatActivity() {
                 imeAction = ImeAction.Done
             ),
             leadingIcon = {
-                Icon(
-                    imageVector = Icons.Filled.Lock,
-                    contentDescription = null
-                )
+//                Icon(
+//                    imageVector = Icons.Filled.Lock,
+//                    contentDescription = null
+//                )
             }
         )
         var showImage by remember { mutableStateOf(true) }
