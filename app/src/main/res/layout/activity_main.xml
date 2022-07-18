@@ -63,4 +63,11 @@
         android:onClick="motionTest"
         android:text="卡顿分析"
         android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="mvi"
+        android:text="MVI"
+        android:textAllCaps="false" />
 </LinearLayout>

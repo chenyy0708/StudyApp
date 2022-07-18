@@ -45,6 +45,7 @@ import androidx.lifecycle.ViewModel
 import coil.compose.AsyncImage
 import com.example.study.MyApp
 import com.example.study.logD
+import com.example.study.ui.compose.ParentLayout
 import com.example.study.ui.compose.ParentLayoutV2
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -66,7 +67,7 @@ class ComposeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             viewModel.addItem((TodoItem("任务1")))
-//            TodoActivityScreen(todoViewModel = viewModel)
+            TodoActivityScreen(todoViewModel = viewModel)
 //            ParentLayout(
 //                modifier = Modifier
 //                    .padding(10.dp)
@@ -89,28 +90,28 @@ class ComposeActivity : AppCompatActivity() {
 //                Text(text = "啦啦啦啦11")
 //
 //            }
-            val modifier = Modifier
-                .size(100.dp)
-                .background(Color.Red)
-                .padding(10.dp)
-                .background(Color.Blue)
-
-            val name = modifier.foldOut("name:") { element, s ->
-                logD("Modifier:${element::class.java.simpleName}")
-                s + element::class.java.simpleName
-            }
-            logD("Modifier---:${name}")
-
-            ParentLayoutV2(
-                Modifier
-                    .size(100.dp)
-                    .background(Color.Red)
-                    .padding(10.dp)
-                    .background(Color.Blue)
-            ) {
-                Text(text = "啦啦啦啦10")
-                Text(text = "啦啦啦啦11")
-            }
+//            val modifier = Modifier
+//                .size(100.dp)
+//                .background(Color.Red)
+//                .padding(10.dp)
+//                .background(Color.Blue)
+//
+//            val name = modifier.foldOut("name:") { element, s ->
+//                logD("Modifier:${element::class.java.simpleName}")
+//                s + element::class.java.simpleName
+//            }
+//            logD("Modifier---:${name}")
+//
+//            ParentLayoutV2(
+//                Modifier
+//                    .size(100.dp)
+//                    .background(Color.Red)
+//                    .padding(10.dp)
+//                    .background(Color.Blue)
+//            ) {
+//                Text(text = "啦啦啦啦10")
+//                Text(text = "啦啦啦啦11")
+//            }
         }
 
     }
@@ -124,7 +125,8 @@ class ComposeActivity : AppCompatActivity() {
         LazyColumn(
             content = {
                 item {
-                    BasicsComponents()
+//                    BasicsComponents()
+                    testFiled("测试文案1")
                 }
                 item {
                     LayoutComponents()
@@ -136,6 +138,29 @@ class ComposeActivity : AppCompatActivity() {
                     FooterComponents(onAddItem, onRemoveItem)
                 }
             },
+        )
+    }
+
+    @Composable
+    private fun testFiled(
+        textStr:String = ""
+    ) {
+        var text by remember { mutableStateOf(textStr) }
+        TextField(
+            value = text,
+            onValueChange = { text = it },
+            placeholder = { Text(text = "我是一个占位提示文案") },
+//            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
+            leadingIcon = {
+//                Icon(
+//                    imageVector = Icons.Filled.Lock,
+//                    contentDescription = null
+//                )
+            }
         )
     }
 

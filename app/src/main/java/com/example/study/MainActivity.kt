@@ -130,4 +130,8 @@ class MainActivity : AppCompatActivity() {
     fun motionTest(view: View) {
         Router.startUri(this, "/motionTest")
     }
+
+    fun mvi(view: View) {
+        Router.startUri(this, "/mvi")
+    }
 }
