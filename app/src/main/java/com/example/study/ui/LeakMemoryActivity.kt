@@ -26,7 +26,7 @@ class LeakMemoryActivity : AppCompatActivity() {
     }
 
     fun singleton(view: View) {
-        SingleTest.getInstance().init(this.applicationContext)
+        SingleTest.getInstance().init(this)
         SingleTest.getInstance().showToast("单例泄露")
     }
 }

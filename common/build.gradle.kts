@@ -6,7 +6,7 @@ plugins {
 apply {
     from("$rootDir/config/module_build_config.gradle")
     from("$rootDir/config/dependencies.gradle")
-    from("lorem.gradle.kts")
+//    from("lorem.gradle.kts")
 }
 
 dependencies {

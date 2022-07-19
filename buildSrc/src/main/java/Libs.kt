@@ -67,7 +67,6 @@ object Libs {
         "com.hi-dhl:binding:1.1.3",
         "androidx.tracing:tracing:1.0.0",
         "androidx.tracing:tracing-ktx:1.0.0",
-        "cn.hikyson.godeye:godeye-core:3.4.3",
         "com.github.bumptech.glide:glide:${Versions.GLIDE}",
     )
     val hilt = listOf(

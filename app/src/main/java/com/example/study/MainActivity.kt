@@ -11,9 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.tracing.Trace
-import cn.hikyson.godeye.core.GodEye
-import cn.hikyson.godeye.core.exceptions.UninstallException
-import cn.hikyson.godeye.core.internal.modules.fps.Fps
 import com.example.study.asm.OptimizedThreadAsm
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
@@ -56,13 +53,6 @@ class MainActivity : AppCompatActivity() {
         OptimizedThreadAsm().test()
         viewModel.test()
         user.test()
-        try {
-            GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
-                logD(tag = "StudyTrace", msg = "当前页面FPS:${it.currentFps}，系统预设FPS:${it.systemFps}")
-            }
-        } catch (e: UninstallException) {
-            e.printStackTrace()
-        }
         ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             llContainer.viewTreeObserver.addOnPreDrawListener(object :
