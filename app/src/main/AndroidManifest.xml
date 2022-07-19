@@ -62,12 +62,13 @@
             android:theme="@style/Theme.Study.NoActionBar" />
         <activity
             android:name=".ui.MotionTestActivity"
-            android:label="卡顿分析"
-            android:theme="@style/Theme.Study.NoActionBar" />
+            android:label="卡顿分析" />
         <activity
             android:name=".mvi.MVIActivity"
-            android:label="MVI"
-            android:theme="@style/Theme.Study.NoActionBar" />
+            android:label="MVI" />
+        <activity
+            android:name=".ui.LeakMemoryActivity"
+            android:label="内存泄露" />
         <activity
             android:name=".ui.TestFpsActivity"
             android:label="FPS" />

@@ -70,4 +70,11 @@
         android:onClick="mvi"
         android:text="MVI"
         android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="leakMemory"
+        android:text="内存泄露"
+        android:textAllCaps="false" />
 </LinearLayout>

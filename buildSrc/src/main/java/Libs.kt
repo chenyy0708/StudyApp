@@ -22,8 +22,8 @@ object Libs {
         "androidx.multidex:multidex:${Versions.MULTIDEX_VERSION}"
     )
     val test = listOf(
-        "androidx.test.ext:junit:1.1.2",
-        "junit:junit:4.13.2",
+//        "androidx.test.ext:junit:1.1.2",
+//        "junit:junit:4.13.2",
         "androidx.test.espresso:espresso-core:3.3.0",
 
         )
@@ -47,7 +47,7 @@ object Libs {
     )
     val square = listOf(
         "com.squareup.retrofit2:retrofit:2.9.0",
-        "com.squareup.leakcanary:leakcanary-android:2.7",
+//        "com.squareup.leakcanary:leakcanary-android:2.7",
     )
     val rxjava = listOf(
         "io.reactivex.rxjava2:rxjava:2.2.21",

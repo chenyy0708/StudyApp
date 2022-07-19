@@ -17,8 +17,10 @@ import cn.hikyson.godeye.core.internal.modules.fps.Fps
 import com.example.study.asm.OptimizedThreadAsm
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
+import com.example.study.ui.LeakMemoryActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.example.study.utils.SingleTest
 import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -133,5 +135,9 @@ class MainActivity : AppCompatActivity() {
 
     fun mvi(view: View) {
         Router.startUri(this, "/mvi")
+    }
+
+    fun leakMemory(view: View) {
+        Router.startUri(this, "/leakMemory")
     }
 }

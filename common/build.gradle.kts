@@ -19,4 +19,5 @@ dependencies {
     api(project(":launcher"))
     api(project(":interfaces"))
     api(project(":moduleLike"))
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.9.1")
 }
