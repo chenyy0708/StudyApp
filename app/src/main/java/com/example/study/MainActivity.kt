@@ -128,6 +128,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun leakMemory(view: View) {
+        LeakMemoryActivity.dog?.call()
         Router.startUri(this, "/leakMemory")
     }
 }

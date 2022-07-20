@@ -14,7 +14,21 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="singleton"
-        android:text="内存泄露模拟"
+        android:onClick="handler"
+        android:text="非静态内部类Handler泄露"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="staticHandler"
+        android:text="静态Handler"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="innerClass"
+        android:text="非静态内部类静态实例"
         android:textAllCaps="false" />
 </LinearLayout>
