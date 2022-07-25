@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    id("McImage")
 }
 apply {
     from("$rootDir/config/module_build_config.gradle")

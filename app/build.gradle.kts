@@ -6,15 +6,25 @@ plugins {
     id("Lifecycle")
     id("dagger.hilt.android.plugin")
     id("AGPPlugin")
+    id("McImage")
     id("com.tencent.matrix-plugin")
 }
 
 matrix {
     trace {
         isEnable = true
-        baseMethodMapFile = "${project.buildDir}/matrix_output/Debug.methodmap"
-        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
+//        baseMethodMapFile = "${project.buildDir}/matrix_output/Debug.methodmap"
+//        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
     }
+}
+
+McImageConfig {
+    enableWhenDebug(true)
+    optimizeType("ConvertWebp")
+    mctoolsDir("$rootDir")
+    maxSize(2 * 2048 * 2048f)
+    maxWidth(3000)
+    maxHeight(3000)
 }
 
 android {
