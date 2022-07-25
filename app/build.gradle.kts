@@ -40,13 +40,24 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            // 启用代码压缩、混淆和优化
+            isMinifyEnabled = true
+            // 资源混淆优化
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
         getByName("debug") {
+            // 启用代码压缩、混淆和优化
+            isMinifyEnabled = true
+            // 资源混淆优化
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 

@@ -47,7 +47,6 @@ object Libs {
     )
     val square = listOf(
         "com.squareup.retrofit2:retrofit:2.9.0",
-//        "com.squareup.leakcanary:leakcanary-android:2.7",
     )
     val rxjava = listOf(
         "io.reactivex.rxjava2:rxjava:2.2.21",
@@ -78,12 +77,9 @@ object Libs {
         "androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}",
         "androidx.compose.foundation:foundation-layout:${Versions.COMPOSE_VERSION}",
         "androidx.compose.material:material:${Versions.COMPOSE_VERSION}",
-//        "androidx.compose.material:material-icons-extended:${Versions.COMPOSE_VERSION}",
         "androidx.compose.foundation:foundation:${Versions.COMPOSE_VERSION}",
         "androidx.compose.animation:animation:${Versions.COMPOSE_VERSION}",
-//        "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}",
         "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}",
-//        "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}",
         "androidx.constraintlayout:constraintlayout-compose:1.0.0",
         "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
         "androidx.activity:activity-compose:1.3.1",
