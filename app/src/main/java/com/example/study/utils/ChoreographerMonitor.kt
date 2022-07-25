@@ -1,6 +1,7 @@
 package com.example.study.utils
 
 import android.view.Choreographer
+import androidx.annotation.Keep
 import com.example.study.logD
 import kotlin.math.round
 
@@ -8,6 +9,7 @@ import kotlin.math.round
  * Created by chenyy on 2022/7/14.
  */
 
+@Keep
 object ChoreographerMonitor {
 
     fun start() {
