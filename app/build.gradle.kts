@@ -51,13 +51,13 @@ android {
         }
         getByName("debug") {
             // 启用代码压缩、混淆和优化
-            isMinifyEnabled = true
-            // 资源混淆优化
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+//            isMinifyEnabled = true
+//            // 资源混淆优化
+//            isShrinkResources = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
         }
     }
 
@@ -112,5 +112,7 @@ dependencies {
 
     debugImplementation("androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}")
     debugImplementation("androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}")
+
+    implementation("com.github.anrwatchdog:anrwatchdog:1.4.0")
 }
 

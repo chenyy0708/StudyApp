@@ -17,13 +17,13 @@ import com.example.study.ui.ComponentActivity
 import com.example.study.ui.LeakMemoryActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
-import com.example.study.utils.SingleTest
 import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.Retrofit
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -73,12 +73,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         TimeMonitor.endRecord("launch_app", System.currentTimeMillis())
-        reportFullyDrawn()
+//        reportFullyDrawn()
         Trace.endSection()
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
+        println("范围分为非we1")
         super.onWindowFocusChanged(hasFocus)
+        println("范围分为非we2")
+        reportFullyDrawn()
     }
 
     fun openRv(view: View) {
@@ -130,5 +133,27 @@ class MainActivity : AppCompatActivity() {
     fun leakMemory(view: View) {
         LeakMemoryActivity.dog?.call()
         Router.startUri(this, "/leakMemory")
+    }
+
+    fun anrTest(view: View) {
+        val lock1 = Object()
+        val lock2 = Object()
+        //子线程持有锁1，想要竞争锁2
+        thread {
+            synchronized(lock1) {
+                Thread.sleep(100)
+
+                synchronized(lock2) {
+                    logD("testAnr: getLock2")
+                }
+            }
+        }
+        //主线程持有锁2，想要竞争锁1
+        synchronized(lock2) {
+            Thread.sleep(100)
+            synchronized(lock1) {
+                logD("testAnr: getLock1")
+            }
+        }
     }
 }

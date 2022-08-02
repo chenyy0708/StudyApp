@@ -77,4 +77,15 @@
         android:onClick="leakMemory"
         android:text="内存泄露"
         android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="anrTest"
+        android:text="模拟ANR"
+        android:textAllCaps="false" />
+
+    <com.example.study.view.TestView
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 </LinearLayout>

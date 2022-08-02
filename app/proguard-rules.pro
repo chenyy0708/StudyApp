@@ -24,7 +24,6 @@
 # 如需输出 R8 在构建项目时应用的所有规则的完整报告，用于排查R8问题
 #-printconfiguration /Users/yangyichen/Desktop/full-r8-config.txt
 
-
 -keep public class com.alibaba.android.arouter.routes.**{*;}
 -keep public class com.alibaba.android.arouter.facade.**{*;}
 -keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
@@ -43,6 +42,12 @@
 # ASM自动生成代码，生命周期初始化
 -keep public class com.example.modulelike.generated.**{*;}
 
+-keepclassmembers public class * extends android.view.View {
+   void set*(***);
+   *** get*();
+}
+
+#-keep class com.example.study.view.* {*;}
 
 # 为确保对堆栈轨迹进行轨迹还原时清楚明确，您应将以下规则添加到模块的 proguard-rules.pro 文件中：
 -keepattributes LineNumberTable,SourceFile
