@@ -19,10 +19,11 @@ object Libs {
         "androidx.constraintlayout:constraintlayout:2.0.4",
         "com.google.android.material:material:1.3.0",
         "androidx.appcompat:appcompat:1.3.0",
+        "androidx.multidex:multidex:${Versions.MULTIDEX_VERSION}"
     )
     val test = listOf(
-        "androidx.test.ext:junit:1.1.2",
-        "junit:junit:4.13.2",
+//        "androidx.test.ext:junit:1.1.2",
+//        "junit:junit:4.13.2",
         "androidx.test.espresso:espresso-core:3.3.0",
 
         )
@@ -46,7 +47,6 @@ object Libs {
     )
     val square = listOf(
         "com.squareup.retrofit2:retrofit:2.9.0",
-        "com.squareup.leakcanary:leakcanary-android:2.7",
     )
     val rxjava = listOf(
         "io.reactivex.rxjava2:rxjava:2.2.21",
@@ -66,7 +66,6 @@ object Libs {
         "com.hi-dhl:binding:1.1.3",
         "androidx.tracing:tracing:1.0.0",
         "androidx.tracing:tracing-ktx:1.0.0",
-        "cn.hikyson.godeye:godeye-core:3.4.3",
         "com.github.bumptech.glide:glide:${Versions.GLIDE}",
     )
     val hilt = listOf(
@@ -78,12 +77,9 @@ object Libs {
         "androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}",
         "androidx.compose.foundation:foundation-layout:${Versions.COMPOSE_VERSION}",
         "androidx.compose.material:material:${Versions.COMPOSE_VERSION}",
-        "androidx.compose.material:material-icons-extended:${Versions.COMPOSE_VERSION}",
         "androidx.compose.foundation:foundation:${Versions.COMPOSE_VERSION}",
         "androidx.compose.animation:animation:${Versions.COMPOSE_VERSION}",
-        "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}",
         "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}",
-        "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}",
         "androidx.constraintlayout:constraintlayout-compose:1.0.0",
         "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
         "androidx.activity:activity-compose:1.3.1",
@@ -96,4 +92,18 @@ object Libs {
     const val A_ROUTER = "com.alibaba:arouter-api:1.5.1"
     const val HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.36"
     const val A_ROUTER_COMPILER = "com.alibaba:arouter-compiler:1.2.2"
+
+    const val MATRIX_PLUGIN = "com.tencent.matrix:matrix-gradle-plugin:${Versions.MATRIX_VERSION}"
+
+    val matrix = listOf(
+        "com.tencent.matrix:matrix-android-lib:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-android-commons:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-trace-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-resource-canary-android:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-resource-canary-common:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-io-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-sqlite-lint-android-sdk:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-battery-canary:${Versions.MATRIX_VERSION}",
+        "com.tencent.matrix:matrix-hooks:${Versions.MATRIX_VERSION}",
+    )
 }

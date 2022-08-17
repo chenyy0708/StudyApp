@@ -10,23 +10,20 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.whenResumed
-import cn.hikyson.godeye.core.GodEye
-import cn.hikyson.godeye.core.exceptions.UninstallException
-import cn.hikyson.godeye.core.internal.modules.fps.Fps
-import com.example.common.utils.StudyTrace
+import androidx.tracing.Trace
 import com.example.study.asm.OptimizedThreadAsm
 import com.example.study.databinding.ActivityMainBinding
 import com.example.study.ui.ComponentActivity
+import com.example.study.ui.LeakMemoryActivity
 import com.example.study.ui.MultithreadActivity
 import com.example.study.ui.RVActivity
+import com.example.study.utils.TimeMonitor
 import com.sankuai.waimai.router.Router
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import retrofit2.Retrofit
 import javax.inject.Inject
-import kotlin.coroutines.resume
+import kotlin.concurrent.thread
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -48,30 +45,20 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
+        Trace.beginSection("MainActivity.onCreate")
         super.onCreate(savedInstanceState)
-//        getContent.launch()
+        TimeMonitor.startRecord("activity_launch", System.currentTimeMillis())
         val start = System.currentTimeMillis()
-//        analyticsService.analyticsMethods()
-        logD("user test1:${user}")
-        logD("user test2:${user2}")
-        logD("retrofit:${retrofit}")
+        analyticsService.analyticsMethods()
         OptimizedThreadAsm().test()
         viewModel.test()
         user.test()
-        try {
-            GodEye.instance().getModule<Fps>(GodEye.ModuleName.FPS).subject()?.subscribe {
-//                logD("fwegwerwerw:$" + it.currentFps + "---" + it.systemFps)
-            }
-        } catch (e: UninstallException) {
-            e.printStackTrace()
-        }
-        Thread.sleep(200)
         ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             llContainer.viewTreeObserver.addOnPreDrawListener(object :
                 ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
-                    StudyTrace.end("startApp")
+                    TimeMonitor.endRecord("activity_launch", System.currentTimeMillis())
                     llContainer.viewTreeObserver.removeOnPreDrawListener(this)
                     return true
                 }
@@ -81,28 +68,19 @@ class MainActivity : AppCompatActivity() {
         val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
             logD("exception:${throwable.message}")
         }
-
-        lifecycleScope.launchWhenResumed {
-            whenResumed { }
-        }
-
-        lifecycleScope.launch(coroutineExceptionHandler) {
-//            logD("step1")
-            val result = withContext(Dispatchers.IO) {
-                read()
-            }
-//            logD("step2:${result}")
-        }
-    }
-
-    private suspend fun read(): String = suspendCancellableCoroutine<String> {
-        Thread.sleep(1000L)
-//        logD("Thread:${Thread.currentThread().name}")
-        it.resume("fwefwef")
     }
 
     override fun onResume() {
         super.onResume()
+        TimeMonitor.endRecord("launch_app", System.currentTimeMillis())
+//        reportFullyDrawn()
+        Trace.endSection()
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        println("范围分为非we1")
+        super.onWindowFocusChanged(hasFocus)
+        println("范围分为非we2")
         reportFullyDrawn()
     }
 
@@ -119,7 +97,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openCoroutine(view: View) {
-//        startActivity(Intent(this, CoroutineActivity::class.java))
         Router.startUri(this, "/coroutine")
     }
 
@@ -131,11 +108,52 @@ class MainActivity : AppCompatActivity() {
         Router.startUri(this, "/pay")
     }
 
-    val content = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
+    val content =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { success: Map<String, Boolean>? ->
             Toast.makeText(this, "权限请求:${success}", Toast.LENGTH_SHORT).show()
         }
 
     fun requestPermission(view: View) {
-        content.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE))
+        content.launch(
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        )
+    }
+
+    fun motionTest(view: View) {
+        Router.startUri(this, "/motionTest")
+    }
+
+    fun mvi(view: View) {
+        Router.startUri(this, "/mvi")
+    }
+
+    fun leakMemory(view: View) {
+        LeakMemoryActivity.dog?.call()
+        Router.startUri(this, "/leakMemory")
+    }
+
+    fun anrTest(view: View) {
+        val lock1 = Object()
+        val lock2 = Object()
+        //子线程持有锁1，想要竞争锁2
+        thread {
+            synchronized(lock1) {
+                Thread.sleep(100)
+
+                synchronized(lock2) {
+                    logD("testAnr: getLock2")
+                }
+            }
+        }
+        //主线程持有锁2，想要竞争锁1
+        synchronized(lock2) {
+            Thread.sleep(100)
+            synchronized(lock1) {
+                logD("testAnr: getLock1")
+            }
+        }
     }
 }

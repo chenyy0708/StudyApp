@@ -6,6 +6,25 @@ plugins {
     id("Lifecycle")
     id("dagger.hilt.android.plugin")
     id("AGPPlugin")
+    id("McImage")
+    id("com.tencent.matrix-plugin")
+}
+
+matrix {
+    trace {
+        isEnable = true
+//        baseMethodMapFile = "${project.buildDir}/matrix_output/Debug.methodmap"
+//        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
+    }
+}
+
+McImageConfig {
+    enableWhenDebug(true)
+    optimizeType("ConvertWebp")
+    mctoolsDir("$rootDir")
+    maxSize(2 * 2048 * 2048f)
+    maxWidth(3000)
+    maxHeight(3000)
 }
 
 android {
@@ -21,39 +40,30 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            // 启用代码压缩、混淆和优化
+            isMinifyEnabled = true
+            // 资源混淆优化
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            resValue("bool", "android_god_eye_manual_install", "false") // 是否手动安装，默认false
-            resValue(
-                "bool",
-                "android_god_eye_need_notification",
-                "false"
-            ) // 是否展示通知栏，默认false，生产环境请关闭
-            resValue("integer", "android_god_eye_monitor_port", "5399") // Monitor端口，默认5390
-            resValue(
-                "string",
-                "android_god_eye_install_assets_path",
-                "android-godeye-config/release_install.config"
-            ) // 安装配置文件在assets中的路径
         }
         getByName("debug") {
-            resValue("bool", "android_god_eye_manual_install", "false")
-            resValue("bool", "android_god_eye_need_notification", "true")
-            resValue("integer", "android_god_eye_monitor_port", "5399")
-            resValue(
-                "string",
-                "android_god_eye_install_assets_path",
-                "android-godeye-config/install.config"
-            )
+            // 启用代码压缩、混淆和优化
+//            isMinifyEnabled = true
+//            // 资源混淆优化
+//            isShrinkResources = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
         }
     }
 
     buildFeatures {
         viewBinding = true
-        dataBinding = true
+//        dataBinding = true
         compose = true
     }
 
@@ -70,6 +80,17 @@ android {
         val options = this as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
         options.jvmTarget = "1.8"
     }
+
+    packagingOptions {
+        jniLibs.pickFirsts.add("lib/armeabi-v7a/libc++_shared.so")
+        jniLibs.pickFirsts.add("lib/arm64-v8a/libc++_shared.so")
+        jniLibs.pickFirsts.add("lib/armeabi-v7a/libwechatbacktrace.so")
+        jniLibs.pickFirsts.add("lib/arm64-v8a/libwechatbacktrace.so")
+    }
+}
+
+configurations {
+    debugImplementation.get().exclude(group = "junit",module = "junit")
 }
 
 dependencies {
@@ -87,5 +108,11 @@ dependencies {
     implementationList(Libs.extend)
     implementationList(Libs.rxjava)
     implementationList(Libs.hilt)
+    implementationList(Libs.matrix)
+
+    debugImplementation("androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}")
+    debugImplementation("androidx.compose.ui:ui-tooling:${Versions.COMPOSE_VERSION}")
+
+    implementation("com.github.anrwatchdog:anrwatchdog:1.4.0")
 }
 
